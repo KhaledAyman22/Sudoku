@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane cache="true" cacheHint="QUALITY" depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" stylesheets="@../CSS/Game.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
+   <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="800.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
+         <Button fx:id="backbtn" layoutX="20.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#RedirectToHome" onMousePressed="#BPE" onMouseReleased="#BRE">
+            <graphic>
+               <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/back.png" />
+               </ImageView>
+            </graphic>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <Button fx:id="play_pause" onMouseClicked="#PauseTimerEvent" onMousePressed="#PPE" onMouseReleased="#PRE">
+            <graphic>
+               <ImageView fitHeight="106.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/pause.png" />
+               </ImageView>
+            </graphic>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <padding>
+               <Insets left="640.0" />
+            </padding>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <Button fx:id="howTobtn" layoutX="20.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#RedirectToHTP" onMousePressed="#HTPE" onMouseReleased="#HTRE">
+            <graphic>
+               <ImageView fitHeight="50.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/question.png" />
+               </ImageView>
+            </graphic>
+            <padding>
+               <Insets left="30.0" />
+            </padding>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+      </HBox>
+      <Separator prefWidth="800.0" />
+      <HBox fx:id="TimerBox" alignment="CENTER" prefHeight="53.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <HBox alignment="CENTER" prefHeight="54.0" prefWidth="112.0">
+            <ImageView fitHeight="64.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../images/clock.png" />
+            </ImageView>
+            <Label fx:id="Timer_min" text="00" textFill="#afc0c8">
+               <font>
+                  <Font name="Segoe UI Black" size="20.0" />
+               </font>
+            </Label>
+            <Label text=":" textFill="#afc0c8">
+               <font>
+                  <Font name="Segoe UI Black" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="Timer_sec" text="00" textFill="#afc0c8">
+               <font>
+                  <Font name="Segoe UI Black" size="20.0" />
+               </font>
+            </Label>
+         </HBox>
+         <ImageView fitHeight="64.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+            <Image url="@../images/dollar.png" />
+         </ImageView>
+         <Label fx:id="Score" text="0" textFill="#afc0c8">
+            <font>
+               <Font name="Segoe UI Black" size="20.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </Label>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
+         <Label fx:id="mistakes" prefHeight="54.0" prefWidth="140.0" text="Mistakes : 0/3" textFill="#afc0c8">
+            <font>
+               <Font name="Segoe UI Black" size="20.0" />
+            </font>
+         </Label>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER_LEFT" prefHeight="507.0" prefWidth="800.0">
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+         <Button fx:id="undo" mnemonicParsing="false" onMouseClicked="#Undo" onMousePressed="#UndoPE" onMouseReleased="#UndoRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #247dfb;">
+            <HBox.margin>
+               <Insets left="10.0" right="83.0" top="430.0" />
+            </HBox.margin>
+            <graphic>
+               <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/undo.png" />
+               </ImageView>
+            </graphic>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <HBox fillHeight="false" maxHeight="500.0" maxWidth="500.0" prefHeight="500.0" prefWidth="500.0">
+            <VBox prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <TextField fx:id="r0c0" alignment="CENTER" editable="false" onMouseClicked="#r0c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c1" alignment="CENTER" editable="false" onMouseClicked="#r0c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="66.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c2" alignment="CENTER" editable="false" onMouseClicked="#r0c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="122.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c3" alignment="CENTER" editable="false" onMouseClicked="#r0c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="178.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c4" alignment="CENTER" editable="false" onMouseClicked="#r0c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="234.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c5" alignment="CENTER" editable="false" onMouseClicked="#r0c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="290.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c6" alignment="CENTER" editable="false" onMouseClicked="#r0c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="346.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c7" alignment="CENTER" editable="false" onMouseClicked="#r0c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+            <VBox layoutX="402.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <TextField fx:id="r0c8" alignment="CENTER" editable="false" onMouseClicked="#r0c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r1c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r2c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r3c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r4c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r5c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r6c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r7c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="r8c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <font>
+                     <Font name="Segoe UI Black" size="22.0" />
+                  </font>
+               </TextField>
+            </VBox>
+         </HBox>
+         <Button fx:id="hint" mnemonicParsing="false" onMouseClicked="#Hint" onMousePressed="#HintPE" onMouseReleased="#HintRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #247dfb;">
+            <HBox.margin>
+               <Insets left="83.0" right="10.0" top="430.0" />
+            </HBox.margin>
+            <graphic>
+               <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/idea.png" />
+               </ImageView>
+            </graphic>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+      </HBox>
+      <Separator prefWidth="200.0" style="-fx-background-color: #dcdcdc;">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></Separator>
+      <HBox alignment="CENTER" prefHeight="114.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
+         <ToggleButton fx:id="notes" layoutX="116.0" layoutY="40.0" maxHeight="55.56" maxWidth="55.56" mnemonicParsing="false" onMousePressed="#NotesPE" onMouseReleased="#NoteRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" textFill="WHITE">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="23.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/draft.png" />
+               </ImageView>
+            </graphic>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="one" mnemonicParsing="false" onMousePressed="#onePE" onMouseReleased="#oneRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="1" textFill="WHITE">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets left="40.0" />
+            </HBox.margin>
+            <toggleGroup>
+               <ToggleGroup fx:id="EntryNumbers" />
+            </toggleGroup>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="two" layoutX="382.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#twoPE" onMouseReleased="#twoRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="2" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="three" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#threePE" onMouseReleased="#threeRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="3" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="four" layoutX="438.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#fourPE" onMouseReleased="#fourRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="4" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="five" layoutX="466.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#fivePE" onMouseReleased="#fiveRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="5" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="six" layoutX="494.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#sixPE" onMouseReleased="#sixRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="6" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="seven" layoutX="522.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#sevenPE" onMouseReleased="#sevenRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="7" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="eight" layoutX="550.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#eightPE" onMouseReleased="#eightRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="8" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="nine" layoutX="578.0" layoutY="40.0" mnemonicParsing="false" onMousePressed="#ninePE" onMouseReleased="#nineRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" text="9" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" right="40.0" />
+            </HBox.margin>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+         <ToggleButton fx:id="eraser" layoutX="88.0" layoutY="40.0" maxHeight="55.56" maxWidth="55.56" mnemonicParsing="false" onMousePressed="#EraserPE" onMouseReleased="#EraserRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" textFill="WHITE" toggleGroup="$EntryNumbers">
+            <font>
+               <Font name="Segoe UI Black" size="26.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/eraser.png" />
+               </ImageView>
+            </graphic>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ToggleButton>
+      </HBox>
+   </VBox>
+</Pane>

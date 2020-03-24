@@ -1,0 +1,11 @@
+.Main {-fx-background-color: #ffffff;-fx-font-family: "Segoe UI Black";}
+
+.text{-fx-font-smoothing-type: gray;}
+
+.button {-fx-background-color: #00e8f2;}
+
+.button:hover {-fx-background-color: #287bff}
+
+.button:focused{-fx-background-color: #287bff;}
+
+#backbtn{-fx-background-color: transparent}

@@ -1,0 +1,8 @@
+
+.root {-fx-background-color: #ffffff;-fx-font-family: "Segoe UI Black";}
+
+.text{-fx-font-smoothing-type: gray;}
+
+.button {-fx-background-color: transparent;}
+
+.text-field:hover{-fx-opacity: 0.5}

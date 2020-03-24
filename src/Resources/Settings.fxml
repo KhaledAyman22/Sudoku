@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane cache="true" cacheHint="QUALITY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="395.0" stylesheets="@../CSS/Settings.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SettingsController">
+   <ImageView fitHeight="395.0" fitWidth="553.0" layoutX="-78.0" layoutY="78.0" rotate="90.0">
+      <Image url="@../images/BG.jpg" />
+   </ImageView>
+   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="395.0">
+      <HBox prefHeight="66.0" prefWidth="395.0">
+         <Button fx:id="backbtn" minHeight="0.0" minWidth="38.0" mnemonicParsing="false" onMouseClicked="#RedirectToHome" onMousePressed="#BPE" onMouseReleased="#BRE" prefHeight="34.0" prefWidth="38.0">
+            <graphic>
+               <ImageView blendMode="SRC_ATOP" fitHeight="45.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../images/back.png" />
+               </ImageView>
+            </graphic>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </Button>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <Label text="SUDÖKU" textFill="#297bff">
+            <font>
+               <Font name="Segoe UI Black" size="45.0" />
+            </font>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </Label>
+      </HBox>
+      <GridPane prefHeight="465.0" prefWidth="368.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.8000244140625" minWidth="10.0" prefWidth="319.8000122070313" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.4000244140625" minWidth="10.0" prefWidth="74.99998779296874" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+         <ToggleButton fx:id="timer" mnemonicParsing="false" onMouseClicked="#SwitchTimer" onMousePressed="#TPE" onMouseReleased="#TRE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="Dup" layoutX="254.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#SwitchHDuplicate" onMousePressed="#DPE" onMouseReleased="#DRE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="UsedNum" layoutX="254.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#SwitchHideNumbers" onMousePressed="#UNPE" onMouseReleased="#UNRE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="CheckMistake" layoutX="254.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#SwitchAutoCheck" onMousePressed="#ACPE" onMouseReleased="#ACRE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="MistakeLimit" layoutX="254.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#SwitchLimit" onMousePressed="#MLPE" onMouseReleased="#MLRE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="HIdentical" layoutX="254.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#SwitchHIdenticalNumbers" onMousePressed="#INPE" onMouseReleased="#INRE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="HArea" layoutX="254.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#SwitchHArea" onMousePressed="#APE" onMouseReleased="#ARE" prefHeight="26.0" prefWidth="53.0" selected="true" text="ON" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <effect>
+               <DropShadow blurType="GAUSSIAN" color="#1e63cc" height="15.0" offsetY="8.0" radius="7.3075" spread="0.08" width="16.23" />
+            </effect>
+            <font>
+               <Font name="Segoe UI Black" size="12.0" />
+            </font>
+         </ToggleButton>
+         <VBox prefHeight="200.0" prefWidth="268.0">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Timer">
+               <VBox.margin>
+                  <Insets left="5.0" top="2.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Show or hide timer when playing." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Mistake Limit">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Limit the number of possible mistakes to&#10;3 during the game." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Auto-Check for Mistakes">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Mark numbers which fail to match the&#10;final sudoku solution." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="173.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Hide Used Numbers">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Hide numbers which are already placed in&#10;9 different cells." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="229.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Highlight Duplicates">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Highlight repeated numbers in each row,&#10;column and block." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="229.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Highlight Area">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Highligh a block, column and row for the&#10;selected cell." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="342.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
+            <GridPane.margin>
+               <Insets left="8.0" top="5.0" />
+            </GridPane.margin>
+            <Label text="Highlight Identical Numbers">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="When you select a cell with a number the&#10;same digits are highlighted." textFill="#747373">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+         </VBox>
+      </GridPane>
+   </VBox>
+</Pane>
