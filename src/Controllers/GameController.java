@@ -5,12 +5,18 @@ import Main.Game;
 import Main.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
+import java.io.File;
+
 public class GameController {
     //VARs
-    public static boolean timer=true;
+     public static boolean timer=true;
+    @FXML
+    private ImageView play_pause_img;
     @FXML
     private HBox TimerBox;
     @FXML
@@ -1196,7 +1202,7 @@ public class GameController {
         String s = null;
 
        try{s=String.valueOf(EntryNumbers.getSelectedToggle().toString().charAt(EntryNumbers.getSelectedToggle().toString().length() - 2));}
-       catch (Exception ignored){};
+       catch (Exception ignored){}
 
        try{
            assert s != null;
@@ -1205,7 +1211,7 @@ public class GameController {
        else
            x.setText(s);
        }
-       catch(Exception ignored){};
+       catch(Exception ignored){}
     }
 
     //TypingInGrid
@@ -1537,6 +1543,15 @@ public class GameController {
     @FXML
     public void PauseTimerEvent() {
         PauseTimer();
+        Image i;
+        if(!timer)
+            i=new Image(new File("out/production/Sudoku/images/play.png").toURI().toString());
+        else
+            i=new Image(new File("out/production/Sudoku/images/pause.png").toURI().toString());
+
+        play_pause_img.setImage(i);
+        play_pause_img.setFitHeight(47);
+        play_pause_img.setFitWidth(35);
     }
 
     ////////////////
