@@ -6,3 +6,11 @@
 .button {-fx-background-color: transparent;}
 
 .text-field:hover{-fx-opacity: 0.5}
+
+.text-field{
+    -fx-text-fill: white;
+    -fx-background-color:#e3e3e3 ;
+    -fx-border-color:white ;
+    -fx-background-radius: 15;
+    -fx-border-width:0 ;
+}

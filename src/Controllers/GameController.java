@@ -4,17 +4,56 @@ import Main.HowToPlay;
 import Main.Game;
 import Main.Main;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.util.Pair;
 
 import java.io.File;
+import java.util.*;
 
 public class GameController {
     //VARs
-     public static boolean timer=true;
+    public static boolean timer=true;
+    @FXML
+    private VBox vb;
+    @FXML
+    private Button start;
+    @FXML
+    private ToggleGroup level;
+    @FXML
+    private ToggleButton easy;
+    @FXML
+    private ToggleButton medium;
+    @FXML
+    private ToggleButton hard;
+    @FXML
+    private GridPane Box1;
+    @FXML
+    private GridPane Box2;
+    @FXML
+    private GridPane Box3;
+    @FXML
+    private GridPane Box4;
+    @FXML
+    private GridPane Box5;
+    @FXML
+    private GridPane Box6;
+    @FXML
+    private GridPane Box7;
+    @FXML
+    private GridPane Box8;
+    @FXML
+    private GridPane Box9;
     @FXML
     private ImageView play_pause_img;
     @FXML
@@ -202,8 +241,6 @@ public class GameController {
     @FXML
     private ToggleButton notes;
     @FXML
-    private ToggleGroup NoteErase;
-    @FXML
     private ToggleButton one;
     @FXML
     private ToggleGroup EntryNumbers;
@@ -225,7 +262,30 @@ public class GameController {
     private ToggleButton nine;
     @FXML
     private ToggleButton eraser;
-
+    private ToggleButton last=null;
+    private TextField current=null;
+    private TextField previous=null;
+    private List<TextField>row0;
+    private List<TextField>row1;
+    private List<TextField>row2;
+    private List<TextField>row3;
+    private List<TextField>row4;
+    private List<TextField>row5;
+    private List<TextField>row6;
+    private List<TextField>row7;
+    private List<TextField>row8;
+    private List<TextField>col0;
+    private List<TextField>col1;
+    private List<TextField>col2;
+    private List<TextField>col3;
+    private List<TextField>col4;
+    private List<TextField>col5;
+    private List<TextField>col6;
+    private List<TextField>col7;
+    private List<TextField>col8;
+    boolean found= false;
+    int i=0;
+    int uno=0,dos=0,tres=0,quatro=0,cinco=0,seis=0,siete=0,ocho=0,nueve=0;
     //SETTERS & GETTERS
     public Button getPlay_pause() {
         return play_pause;
@@ -939,14 +999,6 @@ public class GameController {
         this.notes = notes;
     }
 
-    public ToggleGroup getNoteErase() {
-        return NoteErase;
-    }
-
-    public void setNoteErase(ToggleGroup noteErase) {
-        NoteErase = noteErase;
-    }
-
     public ToggleButton getOne() {
         return one;
     }
@@ -1074,6 +1126,16 @@ public class GameController {
     @FXML
     private void EraserRE(MouseEvent event) {
         eraser.setTranslateY(0);
+        if(eraser.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(eraser);
+        }
+        else
+        {
+            SwitchOff(eraser);
+        }
+        last=eraser;
     }
 
     @FXML
@@ -1089,6 +1151,14 @@ public class GameController {
     @FXML
     private void NoteRE(MouseEvent event) {
         notes.setTranslateY(0);
+        if(notes.isSelected())
+        {
+            SwitchOn(notes);
+        }
+        else
+        {
+            SwitchOff(notes);
+        }
     }
 
     @FXML
@@ -1114,6 +1184,16 @@ public class GameController {
     @FXML
     private void oneRE() {
         one.setTranslateY(0);
+        if(one.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(one);
+        }
+        else
+        {
+            SwitchOff(one);
+        }
+        last=one;
     }
 
     @FXML
@@ -1124,6 +1204,16 @@ public class GameController {
     @FXML
     private void twoRE() {
         two.setTranslateY(0);
+        if(two.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(two);
+        }
+        else
+        {
+            SwitchOff(two);
+        }
+        last=two;
     }
 
     @FXML
@@ -1134,6 +1224,16 @@ public class GameController {
     @FXML
     private void threeRE() {
         three.setTranslateY(0);
+        if(three.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(three);
+        }
+        else
+        {
+            SwitchOff(three);
+        }
+        last=three;
     }
 
     @FXML
@@ -1144,6 +1244,16 @@ public class GameController {
     @FXML
     private void fourRE() {
         four.setTranslateY(0);
+        if(four.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(four);
+        }
+        else
+        {
+            SwitchOff(four);
+        }
+        last=four;
     }
 
     @FXML
@@ -1154,6 +1264,16 @@ public class GameController {
     @FXML
     private void fiveRE() {
         five.setTranslateY(0);
+        if(five.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(five);
+        }
+        else
+        {
+            SwitchOff(five);
+        }
+        last=five;
     }
 
     @FXML
@@ -1164,6 +1284,16 @@ public class GameController {
     @FXML
     private void sixRE() {
         six.setTranslateY(0);
+        if(six.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(six);
+        }
+        else
+        {
+            SwitchOff(six);
+        }
+        last=six;
     }
 
     @FXML
@@ -1174,6 +1304,16 @@ public class GameController {
     @FXML
     private void sevenRE() {
         seven.setTranslateY(0);
+        if(seven.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(seven);
+        }
+        else
+        {
+            SwitchOff(seven);
+        }
+        last=seven;
     }
 
     @FXML
@@ -1184,6 +1324,16 @@ public class GameController {
     @FXML
     private void eightRE() {
         eight.setTranslateY(0);
+        if(eight.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(eight);
+        }
+        else
+        {
+            SwitchOff(eight);
+        }
+        last=eight;
     }
 
     @FXML
@@ -1194,28 +1344,20 @@ public class GameController {
     @FXML
     private void nineRE() {
         nine.setTranslateY(0);
-    }
-
-
-    private void setText(TextField x) {
-        //we have to check if the cell is given or not before we change the value (i.e. the cell is filled by the game)
-        String s = null;
-
-       try{s=String.valueOf(EntryNumbers.getSelectedToggle().toString().charAt(EntryNumbers.getSelectedToggle().toString().length() - 2));}
-       catch (Exception ignored){}
-
-       try{
-           assert s != null;
-           if(s.equals("'"))
-            x.setText("");
-       else
-           x.setText(s);
-       }
-       catch(Exception ignored){}
+        if(nine.isSelected())
+        {
+            SwitchOff(last);
+            SwitchOn(nine);
+        }
+        else
+        {
+            SwitchOff(nine);
+        }
+        last=nine;
     }
 
     //TypingInGrid
-        @FXML
+    @FXML
     private void r0c0() {
         setText(r0c0);
     }
@@ -1540,6 +1682,392 @@ public class GameController {
         setText(r8c8);
     }
 
+    List<TextField>r,c=new ArrayList<>();
+    int w1=0,w2=0,w3=0;
+    TextField t1=null,t2=null,t3=null;
+    Stack<Pair<TextField,String>>Undo=new Stack<>();
+    private void setRowCol() {
+        row0= Arrays.asList(r0c0, r0c1, r0c2, r0c3, r0c4, r0c5, r0c6, r0c7, r0c8);
+        row1= Arrays.asList(r1c0, r1c1, r1c2, r1c3, r1c4, r1c5, r1c6, r1c7, r1c8);
+        row2= Arrays.asList(r2c0, r2c1, r2c2, r2c3, r2c4, r2c5, r2c6, r2c7, r2c8);
+        row3= Arrays.asList(r3c0, r3c1, r3c2, r3c3, r3c4, r3c5, r3c6, r3c7, r3c8);
+        row4= Arrays.asList(r4c0, r4c1, r4c2, r4c3, r4c4, r4c5, r4c6, r4c7, r4c8);
+        row5= Arrays.asList(r5c0, r5c1, r5c2, r5c3, r5c4, r5c5, r5c6, r5c7, r5c8);
+        row6= Arrays.asList(r6c0, r6c1, r6c2, r6c3, r6c4, r6c5, r6c6, r6c7, r6c8);
+        row7= Arrays.asList(r7c0, r7c1, r7c2, r7c3, r7c4, r7c5, r7c6, r7c7, r7c8);
+        row8= Arrays.asList(r8c0, r8c1, r8c2, r8c3, r8c4, r8c5, r8c6, r8c7, r8c8);
+
+        col0= Arrays.asList(r0c0, r1c0, r2c0, r3c0, r4c0, r5c0, r6c0, r7c0, r8c0);
+        col1= Arrays.asList(r0c1, r1c1, r2c1, r3c1, r4c1, r5c1, r6c1, r7c1, r8c1);
+        col2= Arrays.asList(r0c2, r1c2, r2c2, r3c2, r4c2, r5c2, r6c2, r7c2, r8c2);
+        col3= Arrays.asList(r0c3, r1c3, r2c3, r3c3, r4c3, r5c3, r6c3, r7c3, r8c3);
+        col4= Arrays.asList(r0c4, r1c4, r2c4, r3c4, r4c4, r5c4, r6c4, r7c4, r8c4);
+        col5= Arrays.asList(r0c5, r1c5, r2c5, r3c5, r4c5, r5c5, r6c5, r7c5, r8c5);
+        col6= Arrays.asList(r0c6, r1c6, r2c6, r3c6, r4c6, r5c6, r6c6, r7c6, r8c6);
+        col7= Arrays.asList(r0c7, r1c7, r2c7, r3c7, r4c7, r5c7, r6c7, r7c7, r8c7);
+        col8= Arrays.asList(r0c8, r1c8, r2c8, r3c8, r4c8, r5c8, r6c8, r7c8, r8c8);
+    }
+    private void SwitchOn(ToggleButton x) {
+        try{ DropShadow dropShadow = new DropShadow();
+            dropShadow.setBlurType(BlurType.THREE_PASS_BOX);
+            dropShadow.setRadius(7.46);
+            dropShadow.setOffsetX(0.0);
+            dropShadow.setOffsetY(8.0);
+            dropShadow.setSpread(0.08);
+            dropShadow.setWidth(16.23);
+            dropShadow.setHeight(15.62);
+            dropShadow.setColor(Color.rgb(117, 170, 255));
+            x.setEffect(dropShadow);}catch(Exception ignored){}
+    }
+    private void SwitchOff(ToggleButton x) {
+        try{ DropShadow dropShadow=new DropShadow();
+            dropShadow.setBlurType(BlurType.THREE_PASS_BOX);
+            dropShadow.setRadius(7.46);
+            dropShadow.setOffsetX(0.0);
+            dropShadow.setOffsetY(8.0);
+            dropShadow.setSpread(0.08);
+            dropShadow.setWidth(16.23);
+            dropShadow.setHeight(15.62);
+            dropShadow.setColor(Color.rgb(30,99,204));
+            x.setEffect(dropShadow);}catch (Exception ignored){}
+    }
+    private void setText(TextField x) {
+        previous=current;
+        current=x;
+        String s = null;
+        try {
+            s = String.valueOf(EntryNumbers.getSelectedToggle().toString().charAt(EntryNumbers.getSelectedToggle().toString().length() - 2));
+        } catch (Exception ignored) {HighlightRCB(current);}
+
+        try {
+            assert s != null;
+            if (s.equals("'")) {
+
+                if(!current.getText().equals(""))
+                {
+                    HighlightRCB(current);
+                    DisableNumber(current.getText(),'-');
+                    Check();
+                    Undo.push(new Pair<>(current,current.getText()));
+                    x.setText("");
+                    x.setPromptText("");
+                }
+                else
+                {
+                    Reset();
+                }
+            }
+            else {
+                if (notes.isSelected()) {
+                    if(!x.getText().equals(""))
+                        DisableNumber(x.getText(),'-');
+                    x.setText("");
+                    x.setPromptText(s);
+                } else {
+                    if(x.getText().equals(""))
+                        DisableNumber(s,'+');
+                    else
+                    {DisableNumber(s,'+');DisableNumber(x.getText(),'-');}
+                    x.setPromptText("");
+                    x.setText(s);
+                    //check for mistakes if mistakes are on
+                }
+            }
+            HighlightRCB(current);
+        } catch (Exception ignored) {}
+
+    }
+    private void DisableNumber(String x,char y) {
+        if(y=='+') {
+            switch (x) {
+                case "1": {
+                    uno++;
+                    if (uno == 9) {one.setDisable(true); one.setSelected(false);}
+                    break;
+                }
+                case "2": {
+                    dos++;
+                    if (dos == 9) {two.setDisable(true); two.setSelected(false);}
+                    break;
+                }
+                case "3": {
+                    tres++;
+                    if (tres == 9) {three.setDisable(true); three.setSelected(false);}
+                    break;
+                }
+                case "4": {
+                    quatro++;
+                    if (quatro == 9) {four.setDisable(true); four.setSelected(false);}
+                    break;
+                }
+                case "5": {
+                    cinco++;
+                    if (cinco == 9) {five.setDisable(true); five.setSelected(false);}
+                    break;
+                }
+                case "6": {
+                    seis++;
+                    if (seis == 9) {six.setDisable(true); six.setSelected(false);}
+                    break;
+                }
+                case "7": {
+                    siete++;
+                    if (siete == 9) {seven.setDisable(true); seven.setSelected(false);}
+                    break;
+                }
+                case "8": {
+                    ocho++;
+                    if (ocho == 9) {eight.setDisable(true); eight.setSelected(false);}
+                    break;
+                }
+                case "9": {
+                    nueve++;
+                    if (nueve == 9) {nine.setDisable(true); nine.setSelected(false);}
+                    break;
+                }
+            }
+        }
+        else if(y=='-') {
+            switch (x) {
+                case "1": {
+                    uno--;
+                    if (one.isDisabled()) one.setDisable(false);
+                    break;
+                }
+                case "2": {
+                    dos--;
+                    if (two.isDisabled()) two.setDisable(false);
+                    break;
+                }
+                case "3": {
+                    tres--;
+                    if (three.isDisabled()) three.setDisable(false);
+                    break;
+                }
+                case "4": {
+                    quatro--;
+                    if (four.isDisabled()) four.setDisable(false);
+                    break;
+                }
+                case "5": {
+                    cinco--;
+                    if (five.isDisabled()) five.setDisable(false);
+                    break;
+                }
+                case "6": {
+                    seis--;
+                    if (six.isDisabled()) six.setDisable(false);
+                    break;
+                }
+                case "7": {
+                    siete--;
+                    if (seven.isDisabled()) seven.setDisable(false);
+                    break;
+                }
+                case "8": {
+                    ocho--;
+                    if (eight.isDisabled()) eight.setDisable(false);
+                    break;
+                }
+                case "9": {
+                    nueve--;
+                    if (nine.isDisabled()) nine.setDisable(false);
+                    break;
+                }
+            }
+        }
+
+    }
+    private List<TextField> getRow(TextField x) {
+        int row=Character.getNumericValue(x.toString().charAt(14));
+        switch (row){
+            case 0:{return(row0);}
+            case 1:{return(row1);}
+            case 2:{return(row2);}
+            case 3:{return(row3);}
+            case 4:{return(row4);}
+            case 5:{return(row5);}
+            case 6:{return(row6);}
+            case 7:{return(row7);}
+            case 8:{return(row8);}
+            default:return(null);
+        }
+    }
+    private List<TextField> getColumn(TextField x) {
+        int column=Character.getNumericValue(x.toString().charAt(16));
+        switch (column){
+            case 0:{return(col0);}
+            case 1:{return(col1);}
+            case 2:{return(col2);}
+            case 3:{return(col3);}
+            case 4:{return(col4);}
+            case 5:{return(col5);}
+            case 6:{return(col6);}
+            case 7:{return(col7);}
+            case 8:{return(col8);}
+            default:return(null);
+        }
+    }
+    private void HighlightRCB(TextField x) {
+        //Resetting
+        Reset();
+        if(current==previous && i==0)
+        {i++;return;}
+        else
+            i=0;
+        //highlighting row,col,and box
+        HighlightR(getRow(current));
+        HighlightC(getColumn(current));
+        HighlightB(current);
+        HighlightNumber();
+    }
+    private void HighlightR(List<TextField> x) {
+        HL(x);
+        r=x;
+    }
+    private void HighlightC(List<TextField> x) {
+        HL(x);
+        c=x;
+    }
+    private void HL(List<TextField> x) {
+        for (TextField textField : x)
+        {
+            if(textField.getText().equals(""))
+                textField.setStyle("-fx-background-color: #d0c4e8");
+            else
+            {
+                if(textField.getText().equals(current.getText()) && !textField.getId().equals(current.getId()) && !current.getText().equals(""))
+                {
+                    found = true;
+                    textField.setStyle("-fx-background-color: #fc4e4e");
+                }
+                else
+                {
+                    if(!textField.getStyle().equals("-fx-background-color: #fc4e4e"))
+                        textField.setStyle("-fx-background-color: #7d4efc");
+
+                }
+            }
+        }
+    }
+    private void Reset() {
+        List<List<TextField>>lists;
+        lists=Arrays.asList(row0,row1,row2,row3,row4,row5,row6,row7,row8);
+        for(int i=0;i<9;i++)
+        {
+            for(int j=0;j<9;j++)
+            {
+                try
+                {
+                    if(lists.get(i).get(j).getText().equals(""))
+                        lists.get(i).get(j).setStyle("-fx-background-color: #e3e3e3");
+                    else
+                    {
+                        if(lists.get(i).get(j).getStyle().equals("-fx-background-color: #fc4e4e")) ;
+                        else if(lists.get(i).get(j).getStyle().equals("-fx-background-color: #00e8f2") && found)
+                        {
+                            lists.get(i).get(j).setStyle("-fx-background-color: #fc4e4e");
+                            found=false;
+                        }
+                        else
+                            lists.get(i).get(j).setStyle("-fx-background-color: #207bff");
+                    }
+                }catch(Exception ignored){}
+            }
+        }
+    }
+    private void HighlightB(TextField x) {
+        for (Node n1 : x.getParent().getChildrenUnmodifiable()) {
+            if(((TextField)n1).getText().equals(""))
+                n1.setStyle("-fx-background-color: #d0c4e8");
+            else
+            {
+                if(((TextField)n1).getText().equals(current.getText()) && !n1.getId().equals(current.getId()) && !current.getText().equals(""))
+                {
+                    found = true;
+                    n1.setStyle("-fx-background-color: #fc4e4e");
+                }
+                else {
+                    if (!n1.getStyle().equals("-fx-background-color: #fc4e4e"))
+                        n1.setStyle("-fx-background-color: #7d4efc");
+                }
+            }
+        }
+        current.setStyle("-fx-background-color: #00e8f2");
+    }
+    private void HighlightNumber() {
+        List<List<TextField>>lists;
+        lists=Arrays.asList(row0,row1,row2,row3,row4,row5,row6,row7,row8);
+        for(int i=0;i<9;i++)
+        {
+           for(int j=0;j<9;j++)
+           {
+               try
+               {
+                   if(lists.get(i).get(j).getText().equals(current.getText()) && !lists.get(i).get(j).getText().equals("")
+                           && !lists.get(i).get(j).getStyle().equals("-fx-background-color: #fc4e4e"))
+                       lists.get(i).get(j).setStyle("-fx-background-color: #6c35ff");
+
+               }catch(Exception ignored){}
+           }
+        }
+        current.setStyle("-fx-background-color: #00e8f2");
+    }
+    private int CheckRow(List<TextField> r) {
+        int w=0;
+        for(int j=0;j<9;j++)
+        {
+            if(r.get(j).getText().equals(current.getText()) && !r.get(j).getId().equals(current.getId()))
+            {w++;t1=r.get(j);}
+        }
+        return w;
+    }
+    private int CheckColumn(List<TextField> c) {
+        int w=0;
+        for(int j=0;j<9;j++)
+        {
+            if(c.get(j).getText().equals(current.getText()) && !c.get(j).getId().equals(current.getId()))
+            {w++;t2=c.get(j);}
+        }
+        return w;
+    }
+    private int CheckBox(TextField x) {
+        int w=0;
+        for(Node n : x.getParent().getChildrenUnmodifiable() )
+        {
+            if(((TextField)n).getText().equals(current.getText()) && !n.getId().equals(current.getId()))
+            {w++;t3=(TextField) n;}
+        }
+        return w;
+    }
+    private void Check() {
+        w1=CheckRow(r);
+        if(w1==1)
+        {
+            w2=CheckColumn(getColumn(t1));
+            w3=CheckBox(t1);
+            if(w2<=1&&w3<=1)
+                t1.setStyle("-fx-background-color: #7d4efc");
+        }
+
+        w2=CheckColumn(c);
+        if(w2==1)
+        {
+            w1=CheckRow(getRow(t2));
+            w3=CheckBox(t2);
+            if(w1<=1&&w3<=1)
+                t2.setStyle("-fx-background-color: #7d4efc");
+        }
+
+        w3=CheckBox(current);
+        if(w3==1)
+        {
+            w2=CheckColumn(getColumn(t3));
+            w1=CheckRow(getRow(t3));
+            if(w2<=1&&w1<=1)
+                t3.setStyle("-fx-background-color: #7d4efc");
+        }
+    }
     @FXML
     public void PauseTimerEvent() {
         PauseTimer();
@@ -1553,11 +2081,6 @@ public class GameController {
         play_pause_img.setFitHeight(47);
         play_pause_img.setFitWidth(35);
     }
-
-    ////////////////
-    //TO BE EDITED//
-    ////////////////
-
     @FXML
     private void RedirectToHTP() throws Exception {
         PauseTimer();
@@ -1569,16 +2092,33 @@ public class GameController {
         Game.getGameStage().close();
         Main.main.show();
     }
+
+    ////////////////
+    //TO BE EDITED//
+    ////////////////
+
     @FXML
     private void Undo() {
         //preform undo
+        if(!Undo.isEmpty()) {
+            current = Undo.peek().getKey();
+            if (Undo.peek().getKey().getText().equals(""))
+                DisableNumber(Undo.peek().getValue(), '+');
+            else {
+                DisableNumber(Undo.peek().getValue(), '+');
+                DisableNumber(current.getText(), '-');
+            }
+            Undo.peek().getKey().setPromptText("");
+            Undo.peek().getKey().setText(Undo.peek().getValue());
+            HighlightRCB(current);
+            Undo.pop();
+        }
     }
     @FXML
     private void Hint() {
         //give hint "reveal one random cell solution" MAKE SURE random output isn't already given
     }
-    public static void PauseTimer()
-    {
+    public static void PauseTimer() {
         timer= !timer;
         if(!timer)
         {
@@ -1587,6 +2127,27 @@ public class GameController {
         else
         {
             //count
+        }
+    }
+    public void start( ) {
+        if(level.getSelectedToggle()==null)
+        {
+            easy.setTranslateY(20);
+            medium.setTranslateY(4);
+            hard.setTranslateY(4);
+            easy.setTranslateY(0);
+            medium.setTranslateY(0);
+            hard.setTranslateY(0);
+        }
+        else {
+            //create sudoku
+            setRowCol();
+            vb.setDisable(false);
+            start.setVisible(false);
+            easy.setVisible(false);
+            medium.setVisible(false);
+            hard.setVisible(false);
+            //get the level
         }
     }
 }

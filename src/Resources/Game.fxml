@@ -11,13 +11,16 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <Pane cache="true" cacheHint="QUALITY" depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" stylesheets="@../CSS/Game.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
-   <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="800.0">
+   <VBox fx:id="vb" alignment="TOP_CENTER" disable="true" prefHeight="800.0" prefWidth="800.0">
       <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
          <Button fx:id="backbtn" layoutX="20.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#RedirectToHome" onMousePressed="#BPE" onMouseReleased="#BRE" prefHeight="56.0" prefWidth="41.0">
             <graphic>
@@ -127,15 +130,19 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Button>
-         <HBox fillHeight="false" maxHeight="500.0" maxWidth="500.0" prefHeight="500.0" prefWidth="500.0">
-            <VBox prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <TextField fx:id="r0c0" alignment="CENTER" editable="false" onMouseClicked="#r0c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+         <Pane prefHeight="500.0" prefWidth="500.0">
+            <GridPane fx:id="Box1" alignment="CENTER" hgap="5.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r0c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c0" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -143,10 +150,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r0c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -154,10 +158,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r0c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -165,10 +166,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c0" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -176,10 +174,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -187,10 +182,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -198,10 +190,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c0" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -209,10 +198,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -220,10 +206,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c0" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -231,15 +214,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c1" alignment="CENTER" editable="false" onMouseClicked="#r0c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box2" alignment="CENTER" hgap="5.0" layoutX="170.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r0c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c3" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -247,10 +234,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r0c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -258,10 +242,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r0c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -269,10 +250,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c3" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -280,10 +258,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -291,10 +266,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -302,10 +274,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c3" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -313,10 +282,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -324,10 +290,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c1" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -335,15 +298,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="66.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c2" alignment="CENTER" editable="false" onMouseClicked="#r0c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box3" alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r0c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c6" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -351,10 +318,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r0c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -362,10 +326,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r0c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r0c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -373,10 +334,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c6" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -384,10 +342,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -395,10 +350,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r1c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r1c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -406,10 +358,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c6" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -417,10 +366,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -428,10 +374,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c2" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r2c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r2c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -439,15 +382,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="122.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c3" alignment="CENTER" editable="false" onMouseClicked="#r0c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box4" alignment="CENTER" hgap="5.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r3c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c0" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -455,10 +402,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r3c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -466,10 +410,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r3c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -477,10 +418,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c0" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -488,10 +426,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c0" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -499,10 +434,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -510,10 +442,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -521,10 +450,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -532,10 +458,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c3" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -543,15 +466,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="178.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c4" alignment="CENTER" editable="false" onMouseClicked="#r0c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box5" alignment="CENTER" hgap="5.0" layoutX="171.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r3c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c3" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -559,10 +486,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r3c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -570,10 +494,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r3c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -581,10 +502,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c3" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -592,10 +510,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -603,10 +518,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -614,10 +526,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c3" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -625,10 +534,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -636,10 +542,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c4" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -647,15 +550,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="234.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c5" alignment="CENTER" editable="false" onMouseClicked="#r0c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box6" alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r3c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c6" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -663,10 +570,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c6" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -674,10 +578,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c6" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -685,10 +586,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r3c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -696,10 +594,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r3c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r3c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -707,10 +602,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -718,10 +610,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r4c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r4c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -729,10 +618,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -740,10 +626,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c5" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r5c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r5c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -751,15 +634,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="290.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c6" alignment="CENTER" editable="false" onMouseClicked="#r0c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box7" alignment="CENTER" hgap="5.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r6c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c0" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -767,10 +654,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c0" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -778,10 +662,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c0" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c0" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -789,10 +670,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r6c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -800,10 +678,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -811,10 +686,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c1" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c1" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -822,10 +694,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r6c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -833,10 +702,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -844,10 +710,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c6" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c2" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c2" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -855,15 +718,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="346.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c7" alignment="CENTER" editable="false" onMouseClicked="#r0c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box8" alignment="CENTER" hgap="5.0" layoutX="170.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r6c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c3" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -871,10 +738,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r6c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -882,10 +746,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r6c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -893,10 +754,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c3" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -904,10 +762,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -915,10 +770,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c3" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c3" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -926,10 +778,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -937,10 +786,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c5" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c5" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -948,10 +794,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c7" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c4" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c4" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -959,15 +802,19 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-            <VBox layoutX="402.0" layoutY="10.0" prefHeight="500.0" prefWidth="55.56">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-               <TextField fx:id="r0c8" alignment="CENTER" editable="false" onMouseClicked="#r0c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+            </GridPane>
+            <GridPane fx:id="Box9" alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <TextField fx:id="r6c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c6" prefHeight="48.8" prefWidth="49.6">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -975,10 +822,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r1c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#r1c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r6c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -986,10 +830,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r2c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" onMouseClicked="#r2c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r6c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r6c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -997,10 +838,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r3c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="122.0" onMouseClicked="#r3c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c6" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -1008,10 +846,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r4c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="178.0" onMouseClicked="#r4c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -1019,10 +854,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r5c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#r5c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets bottom="10.0" top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r7c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r7c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -1030,10 +862,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r6c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="290.0" onMouseClicked="#r6c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c6" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c6" prefHeight="48.8" prefWidth="49.6" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -1041,10 +870,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r7c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="346.0" onMouseClicked="#r7c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c7" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c7" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -1052,10 +878,7 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-               <TextField fx:id="r8c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="402.0" onMouseClicked="#r8c8" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: e3e3e3; -fx-border-color: white; -fx-background-radius: 15; -fx-border-width: 0;">
-                  <VBox.margin>
-                     <Insets top="5.0" />
-                  </VBox.margin>
+               <TextField fx:id="r8c8" alignment="CENTER" editable="false" layoutX="10.0" layoutY="66.0" maxHeight="48.8" maxWidth="49.6" onMouseClicked="#r8c8" prefHeight="48.8" prefWidth="49.6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
@@ -1063,8 +886,8 @@
                      <Font name="Segoe UI Black" size="22.0" />
                   </font>
                </TextField>
-            </VBox>
-         </HBox>
+            </GridPane>
+         </Pane>
          <Button fx:id="hint" mnemonicParsing="false" onMouseClicked="#Hint" onMousePressed="#HintPE" onMouseReleased="#HintRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #247dfb;">
             <HBox.margin>
                <Insets left="83.0" right="10.0" top="430.0" />
@@ -1085,14 +908,15 @@
       <Separator prefWidth="200.0" style="-fx-background-color: #dcdcdc;">
          <VBox.margin>
             <Insets />
-         </VBox.margin></Separator>
+         </VBox.margin>
+      </Separator>
       <HBox alignment="CENTER" prefHeight="114.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
          <ToggleButton fx:id="notes" layoutX="116.0" layoutY="40.0" maxHeight="55.56" maxWidth="55.56" mnemonicParsing="false" onMousePressed="#NotesPE" onMouseReleased="#NoteRE" prefHeight="55.56" prefWidth="55.56" style="-fx-background-color: #287bff;" textFill="WHITE">
             <font>
                <Font name="Segoe UI Black" size="26.0" />
             </font>
             <graphic>
-               <ImageView fitHeight="23.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="53.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../images/draft.png" />
                </ImageView>
             </graphic>
@@ -1253,4 +1077,37 @@
          </ToggleButton>
       </HBox>
    </VBox>
+   <Button fx:id="start" layoutX="158.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#start" prefHeight="122.0" prefWidth="485.0" style="-fx-background-color: #247dfb; -fx-background-radius: 15;" text="START" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Black" size="57.0" />
+      </font>
+   </Button>
+   <ToggleButton fx:id="easy" layoutX="191.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #00e8f2; -fx-background-radius: 15;" text="EASY" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Black" size="15.0" />
+      </font>
+      <toggleGroup>
+         <ToggleGroup fx:id="level" />
+      </toggleGroup>
+      <effect>
+         <DropShadow color="#03b3cb" height="16.08" offsetY="7.0" radius="7.577500000000001" spread="0.08" width="16.23" />
+      </effect>
+   </ToggleButton>
+   <ToggleButton fx:id="medium" layoutX="350.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #00e8f2; -fx-background-radius: 15;" text="MEDIUM" textFill="WHITE" toggleGroup="$level">
+      <font>
+         <Font name="Segoe UI Black" size="15.0" />
+      </font>
+      <effect>
+         <DropShadow color="#03b3cb" height="16.08" offsetY="7.0" radius="7.577500000000001" spread="0.08" width="16.23" />
+      </effect>
+   </ToggleButton>
+   <ToggleButton fx:id="hard" layoutX="507.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #00e8f2; -fx-background-radius: 15;" text="HARD" textFill="WHITE" toggleGroup="$level">
+      <font>
+         <Font name="Segoe UI Black" size="15.0" />
+      </font>
+      <effect>
+         <DropShadow color="#03b3cb" height="16.08" offsetY="7.0" radius="7.577500000000001" spread="0.08" width="16.23" />
+      </effect>
+   </ToggleButton>
+   <Button mnemonicParsing="false" />
 </Pane>
