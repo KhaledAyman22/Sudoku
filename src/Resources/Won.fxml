@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" stylesheets="@../CSS/Game.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WonController">
+   <ImageView fitHeight="434.0" fitWidth="400.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/BG1.jpg" />
+   </ImageView>
+   <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="400.0">
+      <HBox alignment="TOP_CENTER" prefHeight="242.0" prefWidth="400.0">
+         <ImageView fitHeight="266.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/Won.png" />
+         </ImageView>
+      </HBox>
+      <VBox prefHeight="104.0" prefWidth="400.0">
+         <HBox alignment="CENTER" prefHeight="51.0" prefWidth="400.0">
+            <Label text="Score">
+               <font>
+                  <Font name="Segoe UI Black" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="score" alignment="CENTER" prefHeight="31.0" prefWidth="85.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Black" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="134.0" layoutY="18.0" text="Time">
+               <font>
+                  <Font name="Segoe UI Black" size="21.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="time" alignment="CENTER" prefHeight="31.0" prefWidth="85.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Black" size="17.0" />
+               </font>
+            </Label>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="54.0" prefWidth="400.0">
+            <TextField fx:id="name" maxWidth="183.0" prefHeight="31.0" prefWidth="183.0" promptText="Name">
+               <font>
+                  <Font name="Segoe UI Black" size="15.0" />
+               </font>
+            </TextField>
+         </HBox>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="400.0">
+         <Button fx:id="ok" mnemonicParsing="false" onMouseClicked="#ok" onMousePressed="#okPE" onMouseReleased="#okRE" prefHeight="31.0" prefWidth="61.0" style="-fx-background-color: #287bff;" text="OK" textFill="WHITE">
+            <font>
+               <Font name="Segoe UI Black" size="15.0" />
+            </font>
+            <effect>
+               <DropShadow color="#1e63cc" height="15.0" offsetY="6.0" radius="7.3075" width="16.23" />
+            </effect>
+         </Button>
+      </HBox>
+   </VBox>
+</Pane>

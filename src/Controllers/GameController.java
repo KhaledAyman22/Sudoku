@@ -1,6 +1,7 @@
 package Controllers;
 
 import Main.HowToPlay;
+import Main.Won;
 import Main.Game;
 import Main.Main;
 import javafx.fxml.FXML;
@@ -15,7 +16,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.util.Pair;
 
 import java.io.File;
@@ -24,6 +24,10 @@ import java.util.*;
 public class GameController {
     //VARs
     public static boolean timer=true;
+    @FXML
+    private HBox vb1;
+    @FXML
+    private ImageView GameOver;
     @FXML
     private VBox vb;
     @FXML
@@ -1682,10 +1686,12 @@ public class GameController {
         setText(r8c8);
     }
 
+    int Mistakes=0;
     List<TextField>r,c=new ArrayList<>();
     int w1=0,w2=0,w3=0;
     TextField t1=null,t2=null,t3=null;
     Stack<Pair<TextField,String>>Undo=new Stack<>();
+    String difficulty;
     private void setRowCol() {
         row0= Arrays.asList(r0c0, r0c1, r0c2, r0c3, r0c4, r0c5, r0c6, r0c7, r0c8);
         row1= Arrays.asList(r1c0, r1c1, r1c2, r1c3, r1c4, r1c5, r1c6, r1c7, r1c8);
@@ -1770,7 +1776,14 @@ public class GameController {
                     {DisableNumber(s,'+');DisableNumber(x.getText(),'-');}
                     x.setPromptText("");
                     x.setText(s);
-                    //check for mistakes if mistakes are on
+                    //check for mistakes if mistakes are on if = 3 vb.diable=true GameOver.visible=true 
+                    if(Mistakes==3)
+                    {
+                        vb.setDisable(true);
+                        GameOver.setVisible(true);
+                        play_pause.setDisable(true);
+                        howTobtn.setDisable(true);
+                    }
                 }
             }
             HighlightRCB(current);
@@ -2092,11 +2105,6 @@ public class GameController {
         Game.getGameStage().close();
         Main.main.show();
     }
-
-    ////////////////
-    //TO BE EDITED//
-    ////////////////
-
     @FXML
     private void Undo() {
         //preform undo
@@ -2113,6 +2121,16 @@ public class GameController {
             HighlightRCB(current);
             Undo.pop();
         }
+    }
+
+    ////////////////
+    //TO BE EDITED//
+    ////////////////
+
+    private void Won() throws Exception {
+        new Won();
+        WonController.score.setText(Score.getText());
+        WonController.time.setText(Timer_min+":"+Timer_sec);
     }
     @FXML
     private void Hint() {
@@ -2141,13 +2159,25 @@ public class GameController {
         }
         else {
             //create sudoku
+
             setRowCol();
             vb.setDisable(false);
+            vb1.setDisable(false);
             start.setVisible(false);
             easy.setVisible(false);
             medium.setVisible(false);
             hard.setVisible(false);
-            //get the level
+            if(easy.isSelected())
+                difficulty="easy";
+            else if(medium.isSelected())
+                difficulty="medium";
+            else if(hard.isSelected())
+                difficulty="hard";
+
+            WonController.diff=difficulty;
         }
     }
+
+    //if won time = time in won class, score= score in won class
+
 }

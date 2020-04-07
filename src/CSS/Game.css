@@ -14,3 +14,9 @@
     -fx-background-radius: 15;
     -fx-border-width:0 ;
 }
+
+#Timer_min{-fx-background-color: transparent;-fx-text-fill: #afc0c8}
+
+#Timer_sec{-fx-background-color: transparent;-fx-text-fill: #afc0c8}
+
+#Score{-fx-background-color: transparent;-fx-text-fill: #afc0c8}
