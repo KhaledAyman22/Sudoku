@@ -4,6 +4,7 @@ import Main.Main;
 import Main.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
@@ -13,7 +14,7 @@ public class SettingsController {
     @FXML
     private Button backbtn;
     @FXML
-    private ToggleButton timer;
+    private static ToggleButton timer;
     @FXML
     private ToggleButton Dup;
     @FXML
@@ -33,57 +34,31 @@ public class SettingsController {
         return Dup;
     }
     @FXML
-    private void setDup(ToggleButton dup) {
-        Dup = dup;
-    }
-    @FXML
     private ToggleButton getUsedNum() {
         return UsedNum;
-    }
-    @FXML
-    private void setUsedNum(ToggleButton usedNum) {
-        UsedNum = usedNum;
     }
     @FXML
     private ToggleButton getCheckMistake() {
         return CheckMistake;
     }
     @FXML
-    private void setCheckMistake(ToggleButton checkMistake) {
-        CheckMistake = checkMistake;
-    }
-    @FXML
     private ToggleButton getMistakeLimit() {
         return MistakeLimit;
-    }
-    @FXML
-    private void setMistakeLimit(ToggleButton mistakeLimit) {
-        MistakeLimit = mistakeLimit;
     }
     @FXML
     private ToggleButton getHIdentical() {
         return HIdentical;
     }
     @FXML
-    private void setHIdentical(ToggleButton HIdentical) {
-        this.HIdentical = HIdentical;
-    }
-    @FXML
     private ToggleButton getHArea() {
         return HArea;
-    }
-    @FXML
-    private void setHArea(ToggleButton HArea) {
-        this.HArea = HArea;
     }
     @FXML
     private ToggleButton getTimer() {
         return timer;
     }
-    @FXML
-    private void setTimer(ToggleButton timer) {
-         this.timer=timer;
-    }
+
+
 
     //EFFECTS
 

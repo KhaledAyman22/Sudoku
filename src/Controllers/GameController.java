@@ -17,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
-
 import java.io.File;
 import java.util.*;
 
@@ -323,700 +322,12 @@ public class GameController {
         Score = score;
     }
 
-    public Label getMistakes() {
-        return mistakes;
-    }
-
-    public void setMistakes(Label mistakes) {
-        this.mistakes = mistakes;
-    }
-
-    public Button getUndo() {
-        return undo;
-    }
-
-    public void setUndo(Button undo) {
-        this.undo = undo;
-    }
-
-    public TextField getR0c0() {
-        return r0c0;
-    }
-
-    public void setR0c0(TextField r0c0) {
-        this.r0c0 = r0c0;
-    }
-
-    public TextField getR1c0() {
-        return r1c0;
-    }
-
-    public void setR1c0(TextField r1c0) {
-        this.r1c0 = r1c0;
-    }
-
-    public TextField getR2c0() {
-        return r2c0;
-    }
-
-    public void setR2c0(TextField r2c0) {
-        this.r2c0 = r2c0;
-    }
-
-    public TextField getR3c0() {
-        return r3c0;
-    }
-
-    public void setR3c0(TextField r3c0) {
-        this.r3c0 = r3c0;
-    }
-
-    public TextField getR4c0() {
-        return r4c0;
-    }
-
-    public void setR4c0(TextField r4c0) {
-        this.r4c0 = r4c0;
-    }
-
-    public TextField getR5c0() {
-        return r5c0;
-    }
-
-    public void setR5c0(TextField r5c0) {
-        this.r5c0 = r5c0;
-    }
-
-    public TextField getR6c0() {
-        return r6c0;
-    }
-
-    public void setR6c0(TextField r6c0) {
-        this.r6c0 = r6c0;
-    }
-
-    public TextField getR7c0() {
-        return r7c0;
-    }
-
-    public void setR7c0(TextField r7c0) {
-        this.r7c0 = r7c0;
-    }
-
-    public TextField getR8c0() {
-        return r8c0;
-    }
-
-    public void setR8c0(TextField r8c0) {
-        this.r8c0 = r8c0;
-    }
-
-    public TextField getR0c1() {
-        return r0c1;
-    }
-
-    public void setR0c1(TextField r0c1) {
-        this.r0c1 = r0c1;
-    }
-
-    public TextField getR1c1() {
-        return r1c1;
-    }
-
-    public void setR1c1(TextField r1c1) {
-        this.r1c1 = r1c1;
-    }
-
-    public TextField getR2c1() {
-        return r2c1;
-    }
-
-    public void setR2c1(TextField r2c1) {
-        this.r2c1 = r2c1;
-    }
-
-    public TextField getR3c1() {
-        return r3c1;
-    }
-
-    public void setR3c1(TextField r3c1) {
-        this.r3c1 = r3c1;
-    }
-
-    public TextField getR4c1() {
-        return r4c1;
-    }
-
-    public void setR4c1(TextField r4c1) {
-        this.r4c1 = r4c1;
-    }
-
-    public TextField getR5c1() {
-        return r5c1;
-    }
-
-    public void setR5c1(TextField r5c1) {
-        this.r5c1 = r5c1;
-    }
-
-    public TextField getR6c1() {
-        return r6c1;
-    }
-
-    public void setR6c1(TextField r6c1) {
-        this.r6c1 = r6c1;
-    }
-
-    public TextField getR7c1() {
-        return r7c1;
-    }
-
-    public void setR7c1(TextField r7c1) {
-        this.r7c1 = r7c1;
-    }
-
-    public TextField getR8c1() {
-        return r8c1;
-    }
-
-    public void setR8c1(TextField r8c1) {
-        this.r8c1 = r8c1;
-    }
-
-    public TextField getR0c2() {
-        return r0c2;
-    }
-
-    public void setR0c2(TextField r0c2) {
-        this.r0c2 = r0c2;
-    }
-
-    public TextField getR1c2() {
-        return r1c2;
-    }
-
-    public void setR1c2(TextField r1c2) {
-        this.r1c2 = r1c2;
-    }
-
-    public TextField getR2c2() {
-        return r2c2;
-    }
-
-    public void setR2c2(TextField r2c2) {
-        this.r2c2 = r2c2;
-    }
-
-    public TextField getR3c2() {
-        return r3c2;
-    }
-
-    public void setR3c2(TextField r3c2) {
-        this.r3c2 = r3c2;
-    }
-
-    public TextField getR4c2() {
-        return r4c2;
-    }
-
-    public void setR4c2(TextField r4c2) {
-        this.r4c2 = r4c2;
-    }
-
-    public TextField getR5c2() {
-        return r5c2;
-    }
-
-    public void setR5c2(TextField r5c2) {
-        this.r5c2 = r5c2;
-    }
-
-    public TextField getR6c2() {
-        return r6c2;
-    }
-
-    public void setR6c2(TextField r6c2) {
-        this.r6c2 = r6c2;
-    }
-
-    public TextField getR7c2() {
-        return r7c2;
-    }
-
-    public void setR7c2(TextField r7c2) {
-        this.r7c2 = r7c2;
-    }
-
-    public TextField getR8c2() {
-        return r8c2;
-    }
-
-    public void setR8c2(TextField r8c2) {
-        this.r8c2 = r8c2;
-    }
-
-    public TextField getR0c3() {
-        return r0c3;
-    }
-
-    public void setR0c3(TextField r0c3) {
-        this.r0c3 = r0c3;
-    }
-
-    public TextField getR1c3() {
-        return r1c3;
-    }
-
-    public void setR1c3(TextField r1c3) {
-        this.r1c3 = r1c3;
-    }
-
-    public TextField getR2c3() {
-        return r2c3;
-    }
-
-    public void setR2c3(TextField r2c3) {
-        this.r2c3 = r2c3;
-    }
-
-    public TextField getR3c3() {
-        return r3c3;
-    }
-
-    public void setR3c3(TextField r3c3) {
-        this.r3c3 = r3c3;
-    }
-
-    public TextField getR4c3() {
-        return r4c3;
-    }
-
-    public void setR4c3(TextField r4c3) {
-        this.r4c3 = r4c3;
-    }
-
-    public TextField getR5c3() {
-        return r5c3;
-    }
-
-    public void setR5c3(TextField r5c3) {
-        this.r5c3 = r5c3;
-    }
-
-    public TextField getR6c3() {
-        return r6c3;
-    }
-
-    public void setR6c3(TextField r6c3) {
-        this.r6c3 = r6c3;
-    }
-
-    public TextField getR7c3() {
-        return r7c3;
-    }
-
-    public void setR7c3(TextField r7c3) {
-        this.r7c3 = r7c3;
-    }
-
-    public TextField getR8c3() {
-        return r8c3;
-    }
-
-    public void setR8c3(TextField r8c3) {
-        this.r8c3 = r8c3;
-    }
-
-    public TextField getR0c4() {
-        return r0c4;
-    }
-
-    public void setR0c4(TextField r0c4) {
-        this.r0c4 = r0c4;
-    }
-
-    public TextField getR1c4() {
-        return r1c4;
-    }
-
-    public void setR1c4(TextField r1c4) {
-        this.r1c4 = r1c4;
-    }
-
-    public TextField getR2c4() {
-        return r2c4;
-    }
-
-    public void setR2c4(TextField r2c4) {
-        this.r2c4 = r2c4;
-    }
-
-    public TextField getR3c4() {
-        return r3c4;
-    }
-
-    public void setR3c4(TextField r3c4) {
-        this.r3c4 = r3c4;
-    }
-
-    public TextField getR4c4() {
-        return r4c4;
-    }
-
-    public void setR4c4(TextField r4c4) {
-        this.r4c4 = r4c4;
-    }
-
-    public TextField getR5c4() {
-        return r5c4;
-    }
-
-    public void setR5c4(TextField r5c4) {
-        this.r5c4 = r5c4;
-    }
-
-    public TextField getR6c4() {
-        return r6c4;
-    }
-
-    public void setR6c4(TextField r6c4) {
-        this.r6c4 = r6c4;
-    }
-
-    public TextField getR7c4() {
-        return r7c4;
-    }
-
-    public void setR7c4(TextField r7c4) {
-        this.r7c4 = r7c4;
-    }
-
-    public TextField getR8c4() {
-        return r8c4;
-    }
-
-    public void setR8c4(TextField r8c4) {
-        this.r8c4 = r8c4;
-    }
-
-    public TextField getR0c5() {
-        return r0c5;
-    }
-
-    public void setR0c5(TextField r0c5) {
-        this.r0c5 = r0c5;
-    }
-
-    public TextField getR1c5() {
-        return r1c5;
-    }
-
-    public void setR1c5(TextField r1c5) {
-        this.r1c5 = r1c5;
-    }
-
-    public TextField getR2c5() {
-        return r2c5;
-    }
-
-    public void setR2c5(TextField r2c5) {
-        this.r2c5 = r2c5;
-    }
-
-    public TextField getR3c5() {
-        return r3c5;
-    }
-
-    public void setR3c5(TextField r3c5) {
-        this.r3c5 = r3c5;
-    }
-
-    public TextField getR4c5() {
-        return r4c5;
-    }
-
-    public void setR4c5(TextField r4c5) {
-        this.r4c5 = r4c5;
-    }
-
-    public TextField getR5c5() {
-        return r5c5;
-    }
-
-    public void setR5c5(TextField r5c5) {
-        this.r5c5 = r5c5;
-    }
-
-    public TextField getR6c5() {
-        return r6c5;
-    }
-
-    public void setR6c5(TextField r6c5) {
-        this.r6c5 = r6c5;
-    }
-
-    public TextField getR7c5() {
-        return r7c5;
-    }
-
-    public void setR7c5(TextField r7c5) {
-        this.r7c5 = r7c5;
-    }
-
-    public TextField getR8c5() {
-        return r8c5;
-    }
-
-    public void setR8c5(TextField r8c5) {
-        this.r8c5 = r8c5;
-    }
-
-    public TextField getR0c6() {
-        return r0c6;
-    }
-
-    public void setR0c6(TextField r0c6) {
-        this.r0c6 = r0c6;
-    }
-
-    public TextField getR1c6() {
-        return r1c6;
-    }
-
-    public void setR1c6(TextField r1c6) {
-        this.r1c6 = r1c6;
-    }
-
-    public TextField getR2c6() {
-        return r2c6;
-    }
-
-    public void setR2c6(TextField r2c6) {
-        this.r2c6 = r2c6;
-    }
-
-    public TextField getR3c6() {
-        return r3c6;
-    }
-
-    public void setR3c6(TextField r3c6) {
-        this.r3c6 = r3c6;
-    }
-
-    public TextField getR4c6() {
-        return r4c6;
-    }
-
-    public void setR4c6(TextField r4c6) {
-        this.r4c6 = r4c6;
-    }
-
-    public TextField getR5c6() {
-        return r5c6;
-    }
-
-    public void setR5c6(TextField r5c6) {
-        this.r5c6 = r5c6;
-    }
-
-    public TextField getR6c6() {
-        return r6c6;
-    }
-
-    public void setR6c6(TextField r6c6) {
-        this.r6c6 = r6c6;
-    }
-
-    public TextField getR7c6() {
-        return r7c6;
-    }
-
-    public void setR7c6(TextField r7c6) {
-        this.r7c6 = r7c6;
-    }
-
-    public TextField getR8c6() {
-        return r8c6;
-    }
-
-    public void setR8c6(TextField r8c6) {
-        this.r8c6 = r8c6;
-    }
-
-    public TextField getR0c7() {
-        return r0c7;
-    }
-
-    public void setR0c7(TextField r0c7) {
-        this.r0c7 = r0c7;
-    }
-
-    public TextField getR1c7() {
-        return r1c7;
-    }
-
-    public void setR1c7(TextField r1c7) {
-        this.r1c7 = r1c7;
-    }
-
-    public TextField getR2c7() {
-        return r2c7;
-    }
-
-    public void setR2c7(TextField r2c7) {
-        this.r2c7 = r2c7;
-    }
-
-    public TextField getR3c7() {
-        return r3c7;
-    }
-
-    public void setR3c7(TextField r3c7) {
-        this.r3c7 = r3c7;
-    }
-
-    public TextField getR4c7() {
-        return r4c7;
-    }
-
-    public void setR4c7(TextField r4c7) {
-        this.r4c7 = r4c7;
-    }
-
-    public TextField getR5c7() {
-        return r5c7;
-    }
-
-    public void setR5c7(TextField r5c7) {
-        this.r5c7 = r5c7;
-    }
-
-    public TextField getR6c7() {
-        return r6c7;
-    }
-
-    public void setR6c7(TextField r6c7) {
-        this.r6c7 = r6c7;
-    }
-
-    public TextField getR7c7() {
-        return r7c7;
-    }
-
-    public void setR7c7(TextField r7c7) {
-        this.r7c7 = r7c7;
-    }
-
-    public TextField getR8c7() {
-        return r8c7;
-    }
-
-    public void setR8c7(TextField r8c7) {
-        this.r8c7 = r8c7;
-    }
-
-    public TextField getR0c8() {
-        return r0c8;
-    }
-
-    public void setR0c8(TextField r0c8) {
-        this.r0c8 = r0c8;
-    }
-
-    public TextField getR1c8() {
-        return r1c8;
-    }
-
-    public void setR1c8(TextField r1c8) {
-        this.r1c8 = r1c8;
-    }
-
-    public TextField getR2c8() {
-        return r2c8;
-    }
-
-    public void setR2c8(TextField r2c8) {
-        this.r2c8 = r2c8;
-    }
-
-    public TextField getR3c8() {
-        return r3c8;
-    }
-
-    public void setR3c8(TextField r3c8) {
-        this.r3c8 = r3c8;
-    }
-
-    public TextField getR4c8() {
-        return r4c8;
-    }
-
-    public void setR4c8(TextField r4c8) {
-        this.r4c8 = r4c8;
-    }
-
-    public TextField getR5c8() {
-        return r5c8;
-    }
-
-    public void setR5c8(TextField r5c8) {
-        this.r5c8 = r5c8;
-    }
-
-    public TextField getR6c8() {
-        return r6c8;
-    }
-
-    public void setR6c8(TextField r6c8) {
-        this.r6c8 = r6c8;
-    }
-
-    public TextField getR7c8() {
-        return r7c8;
-    }
-
-    public void setR7c8(TextField r7c8) {
-        this.r7c8 = r7c8;
-    }
-
-    public TextField getR8c8() {
-        return r8c8;
-    }
-
-    public void setR8c8(TextField r8c8) {
-        this.r8c8 = r8c8;
-    }
-
-    public Button getHint() {
-        return hint;
-    }
-
-    public void setHint(Button hint) {
-        this.hint = hint;
-    }
-
-    public ToggleButton getNotes() {
-        return notes;
-    }
-
-    public void setNotes(ToggleButton notes) {
-        this.notes = notes;
-    }
-
     public ToggleButton getOne() {
         return one;
     }
 
     public void setOne(ToggleButton one) {
         this.one = one;
-    }
-
-    public ToggleGroup getEntryNumbers() {
-        return EntryNumbers;
-    }
-
-    public void setEntryNumbers(ToggleGroup entryNumbers) {
-        EntryNumbers = entryNumbers;
     }
 
     public ToggleButton getTwo() {
@@ -1081,14 +392,6 @@ public class GameController {
 
     public void setNine(ToggleButton nine) {
         this.nine = nine;
-    }
-
-    public ToggleButton getEraser() {
-        return eraser;
-    }
-
-    public void setEraser(ToggleButton eraser) {
-        this.eraser = eraser;
     }
 
     //EFFECTS
@@ -1687,7 +990,7 @@ public class GameController {
     }
 
     int Mistakes=0;
-    List<TextField>r,c=new ArrayList<>();
+    List<TextField>r,c;
     int w1=0,w2=0,w3=0;
     TextField t1=null,t2=null,t3=null;
     Stack<Pair<TextField,String>>Undo=new Stack<>();
@@ -1737,6 +1040,21 @@ public class GameController {
             dropShadow.setColor(Color.rgb(30,99,204));
             x.setEffect(dropShadow);}catch (Exception ignored){}
     }
+    private void delete(TextField x) {
+        if(!x.getText().equals(""))
+        {
+            HighlightRCB(x);
+            DisableNumber(x.getText(),'-');
+            Check();
+            Undo.push(new Pair<>(x,x.getText()));
+            x.setText("");
+            x.setPromptText("");
+        }
+        else
+        {
+            Reset();
+        }
+    }
     private void setText(TextField x) {
         previous=current;
         current=x;
@@ -1748,20 +1066,7 @@ public class GameController {
         try {
             assert s != null;
             if (s.equals("'")) {
-
-                if(!current.getText().equals(""))
-                {
-                    HighlightRCB(current);
-                    DisableNumber(current.getText(),'-');
-                    Check();
-                    Undo.push(new Pair<>(current,current.getText()));
-                    x.setText("");
-                    x.setPromptText("");
-                }
-                else
-                {
-                    Reset();
-                }
+                delete(current);
             }
             else {
                 if (notes.isSelected()) {
@@ -1769,14 +1074,15 @@ public class GameController {
                         DisableNumber(x.getText(),'-');
                     x.setText("");
                     x.setPromptText(s);
-                } else {
-                    if(x.getText().equals(""))
-                        DisableNumber(s,'+');
-                    else
-                    {DisableNumber(s,'+');DisableNumber(x.getText(),'-');}
+                }
+                else
+                {
+                    if(!x.getText().equals("") && !x.getText().equals(s))
+                            delete(current);
+                    DisableNumber(s,'+');
                     x.setPromptText("");
                     x.setText(s);
-                    //check for mistakes if mistakes are on if = 3 vb.diable=true GameOver.visible=true 
+                    //check for mistakes if mistakes are on if = 3 vb.diable=true GameOver.visible=true
                     if(Mistakes==3)
                     {
                         vb.setDisable(true);
@@ -1958,7 +1264,6 @@ public class GameController {
                 {
                     if(!textField.getStyle().equals("-fx-background-color: #fc4e4e"))
                         textField.setStyle("-fx-background-color: #7d4efc");
-
                 }
             }
         }
@@ -2006,7 +1311,10 @@ public class GameController {
                 }
             }
         }
-        current.setStyle("-fx-background-color: #00e8f2");
+        //if(found)
+          //  current.setStyle("-fx-background-color: #fc4e4e");
+        //else
+            current.setStyle("-fx-background-color: #00e8f2");
     }
     private void HighlightNumber() {
         List<List<TextField>>lists;
@@ -2123,14 +1431,173 @@ public class GameController {
         }
     }
 
+
+    boolean valid_row(int row_number, int val){
+        for (int i = 0; i < 9; i++){
+            if (grid[row_number][i] == val) return false;
+        }
+        return  true;
+    }
+    boolean valid_col(int col_number, int val){
+        for (int i = 0; i < 9; i++){
+            if (grid[i][col_number] == val) return false;
+        }
+        return  true;
+    }
+    boolean valid_box(int a, int b, int val){
+        int si = 3 * a;
+        int ci = 3 * b;
+        for (int i = si; i < si + 3; i++){
+            for (int j = ci; j < ci + 3; j++)
+                if (grid[i][j] == val) return false;
+        }
+        return  true;
+    }
+    int [] get_next(){
+        int []arr = new int[2];
+        boolean a = false;
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9; j++){
+                if (grid[i][j] == 0) {
+                    arr[0] = i;
+                    arr[1] = j;
+                    a = true;
+                    break;
+                }
+            }
+            if (a) break;
+        }
+        return arr;
+    }
+    boolean grid_fill(){
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9; j++){
+                if (grid[i][j] == 0) return false;
+            }
+        }
+        return  true;
+
+    }
+    private int [][]grid = new int [9][9];
+    private int p;
+
+    boolean row_valid(){
+        for (int j = 0; j < 9; j++){
+            int [] freq = new int[10];
+            for (int i = 0; i < 9; i++){
+                freq[grid[j][i]]++;
+            }
+            for (int i = 1; i <= 9; i++){
+                if (freq[i] > 1) return false;
+            }
+            if (freq[0] > 0) return  false;
+        }
+        return  true;
+    }
+    boolean col_valid(){
+        for (int j = 0; j < 9; j++){
+            int [] freq = new int[10];
+            for (int i = 0; i < 9; i++){
+                freq[grid[i][j]]++;
+            }
+            for (int i = 1; i <= 9; i++){
+                if (freq[i] > 1) return false;
+            }
+            if (freq[0] > 0) return  false;
+        }
+        return true;
+    }
+    boolean box_valid(){
+        int cnt = 0;
+        int a = 0, b = 0;
+        int s1 = 0, s2 = 0;
+        for (int k = 0; k < 9;  k++) {
+            int [] freq = new int[10];
+            if (a % 3 == 0) a = 0;
+            s1 = a * 3;a++;
+            if (b % 3 != 0) {s2 = b * 3;b++;}
+            else b = 0;
+            for (int i = s1; i < s1+3; i++) {
+                for (int j = s2; j < s2+3; j++) {
+                    freq[grid[i][j]]++;
+                }
+                for (int v = 1; v <= 9; v++){
+                    if (freq[v] > 1) return false;
+                }
+            }
+            if (freq[0] > 0) return false;
+        }
+        return true;
+    }
+    void generate(){
+        Random r = new Random();
+
+        int cnt = 0;
+        while (cnt < 10){
+            int pos1 = r.nextInt(9);
+            int pos2 = r.nextInt(9);
+            int num = r.nextInt(9) + 1;
+            if (valid_row(pos1,num) && valid_col(pos2,num) && valid_box(pos1/3,pos2/3,num) && grid[pos1][pos2] == 0) {
+                grid[pos1][pos2] = num;
+                cnt++;
+            }
+        }
+    }
+    void easy_mode(){
+        final int required = 40;
+        int cnt = 0;
+        while (cnt < required) {
+            Random r = new Random();
+            int pos1 = r.nextInt(9);
+            int pos2 = r.nextInt(9);
+            int saved = grid[pos1][pos2];
+            grid[pos1][pos2] = 0;
+            if (solve_grid() && p == saved) {
+                grid[pos1][pos2] = 0;
+                cnt++;
+            }
+            else grid[pos1][pos2] = saved;
+        }
+    }
+    boolean solve_grid() {
+        if (row_valid() && col_valid() && box_valid() && grid_fill()) return true;
+
+        int[] arr = get_next();
+        for (int i = 1; i <= 9; i++){
+            if (valid_col(arr[1],i) && valid_row(arr[0],i) && valid_box(arr[0] / 3, arr[1] / 3,i)) {
+                p = i;
+                grid[arr[0]][arr[1]] = i;
+                if (solve_grid()) return true;
+                grid[arr[0]][arr[1]] = 0;
+            }
+        }
+        return false;
+    }
+    void fun(List<TextField> x, int row){
+        for (int i = 0; i < 9; i++) {
+            if (grid[row][i] != 0) x.get(i).setText(String.valueOf(grid[row][i]));
+        }
+    }
+    void call(){
+        fun(row0,0);
+        fun(row1,1);
+        fun(row2,2);
+        fun(row3,3);
+        fun(row4,4);
+        fun(row5,5);
+        fun(row6,6);
+        fun(row7,7);
+        fun(row8,8);
+    }
+
     ////////////////
     //TO BE EDITED//
     ////////////////
 
     private void Won() throws Exception {
         new Won();
-        WonController.score.setText(Score.getText());
-        WonController.time.setText(Timer_min+":"+Timer_sec);
+       // WonController.score.setText(Score.getText());
+        //WonController.time.setText(Timer_min+":"+Timer_sec);
     }
     @FXML
     private void Hint() {
@@ -2158,22 +1625,31 @@ public class GameController {
             hard.setTranslateY(0);
         }
         else {
-            //create sudoku
-
-            setRowCol();
-            vb.setDisable(false);
-            vb1.setDisable(false);
-            start.setVisible(false);
-            easy.setVisible(false);
-            medium.setVisible(false);
-            hard.setVisible(false);
             if(easy.isSelected())
                 difficulty="easy";
             else if(medium.isSelected())
                 difficulty="medium";
             else if(hard.isSelected())
                 difficulty="hard";
-
+            setRowCol();
+            Random r = new Random();
+            grid[0][0] = r.nextInt(9) + 1;
+            generate();
+            solve_grid();
+            switch (difficulty)
+            {
+                case "easy":{easy_mode();break;}
+                case "medium":{/*medium_mode;*/break;}
+                case "hard":{/*hard_mode;*/break;}
+            }
+            call();
+            Reset();
+            vb.setDisable(false);
+            vb1.setDisable(false);
+            start.setVisible(false);
+            easy.setVisible(false);
+            medium.setVisible(false);
+            hard.setVisible(false);
             WonController.diff=difficulty;
         }
     }
@@ -2181,3 +1657,4 @@ public class GameController {
     //if won time = time in won class, score= score in won class
 
 }
+//handel l settings w ab3t l score w time ll won controller

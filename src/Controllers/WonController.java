@@ -9,16 +9,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.FileNotFoundException;
 import java.util.Formatter;
-import java.util.Timer;
 
 public class WonController {
     public TextField name;
     @FXML
     private Button ok;
     @FXML
-    public static Label score;
+    private Label score;
     @FXML
-    public static Label time;
+    private Label time;
     public static String diff;
 
     public void okRE() {

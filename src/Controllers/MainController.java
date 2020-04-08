@@ -3,8 +3,6 @@ import Main.Main;
 import Main.Settings;
 import Main.Game;
 import Main.HighScores;
-import Main.HowToPlay;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
