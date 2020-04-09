@@ -20,6 +20,7 @@ import javafx.util.Pair;
 import java.io.File;
 import java.util.*;
 
+
 public class GameController {
     //VARs
     public static boolean timer=true;
@@ -1432,164 +1433,7 @@ public class GameController {
     }
 
 
-    boolean valid_row(int row_number, int val){
-        for (int i = 0; i < 9; i++){
-            if (grid[row_number][i] == val) return false;
-        }
-        return  true;
-    }
-    boolean valid_col(int col_number, int val){
-        for (int i = 0; i < 9; i++){
-            if (grid[i][col_number] == val) return false;
-        }
-        return  true;
-    }
-    boolean valid_box(int a, int b, int val){
-        int si = 3 * a;
-        int ci = 3 * b;
-        for (int i = si; i < si + 3; i++){
-            for (int j = ci; j < ci + 3; j++)
-                if (grid[i][j] == val) return false;
-        }
-        return  true;
-    }
-    int [] get_next(){
-        int []arr = new int[2];
-        boolean a = false;
-        for (int i = 0; i < 9; i++){
-            for (int j = 0; j < 9; j++){
-                if (grid[i][j] == 0) {
-                    arr[0] = i;
-                    arr[1] = j;
-                    a = true;
-                    break;
-                }
-            }
-            if (a) break;
-        }
-        return arr;
-    }
-    boolean grid_fill(){
-        for (int i = 0; i < 9; i++){
-            for (int j = 0; j < 9; j++){
-                if (grid[i][j] == 0) return false;
-            }
-        }
-        return  true;
-
-    }
-    private int [][]grid = new int [9][9];
-    private int p;
-
-    boolean row_valid(){
-        for (int j = 0; j < 9; j++){
-            int [] freq = new int[10];
-            for (int i = 0; i < 9; i++){
-                freq[grid[j][i]]++;
-            }
-            for (int i = 1; i <= 9; i++){
-                if (freq[i] > 1) return false;
-            }
-            if (freq[0] > 0) return  false;
-        }
-        return  true;
-    }
-    boolean col_valid(){
-        for (int j = 0; j < 9; j++){
-            int [] freq = new int[10];
-            for (int i = 0; i < 9; i++){
-                freq[grid[i][j]]++;
-            }
-            for (int i = 1; i <= 9; i++){
-                if (freq[i] > 1) return false;
-            }
-            if (freq[0] > 0) return  false;
-        }
-        return true;
-    }
-    boolean box_valid(){
-        int cnt = 0;
-        int a = 0, b = 0;
-        int s1 = 0, s2 = 0;
-        for (int k = 0; k < 9;  k++) {
-            int [] freq = new int[10];
-            if (a % 3 == 0) a = 0;
-            s1 = a * 3;a++;
-            if (b % 3 != 0) {s2 = b * 3;b++;}
-            else b = 0;
-            for (int i = s1; i < s1+3; i++) {
-                for (int j = s2; j < s2+3; j++) {
-                    freq[grid[i][j]]++;
-                }
-                for (int v = 1; v <= 9; v++){
-                    if (freq[v] > 1) return false;
-                }
-            }
-            if (freq[0] > 0) return false;
-        }
-        return true;
-    }
-    void generate(){
-        Random r = new Random();
-
-        int cnt = 0;
-        while (cnt < 10){
-            int pos1 = r.nextInt(9);
-            int pos2 = r.nextInt(9);
-            int num = r.nextInt(9) + 1;
-            if (valid_row(pos1,num) && valid_col(pos2,num) && valid_box(pos1/3,pos2/3,num) && grid[pos1][pos2] == 0) {
-                grid[pos1][pos2] = num;
-                cnt++;
-            }
-        }
-    }
-    void easy_mode(){
-        final int required = 40;
-        int cnt = 0;
-        while (cnt < required) {
-            Random r = new Random();
-            int pos1 = r.nextInt(9);
-            int pos2 = r.nextInt(9);
-            int saved = grid[pos1][pos2];
-            grid[pos1][pos2] = 0;
-            if (solve_grid() && p == saved) {
-                grid[pos1][pos2] = 0;
-                cnt++;
-            }
-            else grid[pos1][pos2] = saved;
-        }
-    }
-    boolean solve_grid() {
-        if (row_valid() && col_valid() && box_valid() && grid_fill()) return true;
-
-        int[] arr = get_next();
-        for (int i = 1; i <= 9; i++){
-            if (valid_col(arr[1],i) && valid_row(arr[0],i) && valid_box(arr[0] / 3, arr[1] / 3,i)) {
-                p = i;
-                grid[arr[0]][arr[1]] = i;
-                if (solve_grid()) return true;
-                grid[arr[0]][arr[1]] = 0;
-            }
-        }
-        return false;
-    }
-    void fun(List<TextField> x, int row){
-        for (int i = 0; i < 9; i++) {
-            if (grid[row][i] != 0) x.get(i).setText(String.valueOf(grid[row][i]));
-        }
-    }
-    void call(){
-        fun(row0,0);
-        fun(row1,1);
-        fun(row2,2);
-        fun(row3,3);
-        fun(row4,4);
-        fun(row5,5);
-        fun(row6,6);
-        fun(row7,7);
-        fun(row8,8);
-    }
-
+   //TODO
     ////////////////
     //TO BE EDITED//
     ////////////////
@@ -1614,7 +1458,7 @@ public class GameController {
             //count
         }
     }
-    public void start( ) {
+    public void start( ) throws InterruptedException {
         if(level.getSelectedToggle()==null)
         {
             easy.setTranslateY(20);
@@ -1632,17 +1476,19 @@ public class GameController {
             else if(hard.isSelected())
                 difficulty="hard";
             setRowCol();
-            Random r = new Random();
-            grid[0][0] = r.nextInt(9) + 1;
-            generate();
-            solve_grid();
+            // one object for the game
+
+            Sudoku game = new Sudoku();
+            game.generate();
+            game.solve_grid();
             switch (difficulty)
             {
-                case "easy":{easy_mode();break;}
-                case "medium":{/*medium_mode;*/break;}
-                case "hard":{/*hard_mode;*/break;}
+                case "easy":{game.easy_mode();break;}
+                case "medium":{game.medium_mode();break;}
+                case "hard":{game.hard_mode();break;}
             }
-            call();
+            game.call(row0,row1,row2,row3,row4,row5,row6,row7,row8);
+
             Reset();
             vb.setDisable(false);
             vb1.setDisable(false);
@@ -1651,6 +1497,7 @@ public class GameController {
             medium.setVisible(false);
             hard.setVisible(false);
             WonController.diff=difficulty;
+
         }
     }
 
