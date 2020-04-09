@@ -3,65 +3,39 @@ package Controllers;
 import Main.Main;
 import Main.Settings;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 
-public class SettingsController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SettingsController implements Initializable {
     @FXML
     private Button backbtn;
     @FXML
-    private static ToggleButton timer;
+    private ToggleButton timer;
     @FXML
     private ToggleButton Dup;
     @FXML
     private ToggleButton UsedNum;
     @FXML
-    private ToggleButton CheckMistake;
+    private ToggleButton CheckMistake;//
     @FXML
-    private ToggleButton MistakeLimit;
+    private ToggleButton MistakeLimit;//*
     @FXML
     private ToggleButton HIdentical;
     @FXML
     private ToggleButton HArea;
 
-    //GETTERS & SETTERS
-    @FXML
-    private ToggleButton getDup() {
-        return Dup;
-    }
-    @FXML
-    private ToggleButton getUsedNum() {
-        return UsedNum;
-    }
-    @FXML
-    private ToggleButton getCheckMistake() {
-        return CheckMistake;
-    }
-    @FXML
-    private ToggleButton getMistakeLimit() {
-        return MistakeLimit;
-    }
-    @FXML
-    private ToggleButton getHIdentical() {
-        return HIdentical;
-    }
-    @FXML
-    private ToggleButton getHArea() {
-        return HArea;
-    }
-    @FXML
-    private ToggleButton getTimer() {
-        return timer;
-    }
-
-
-
     //EFFECTS
-
     @FXML
     private  void SwitchTimer() {
         if(timer.isSelected())
@@ -234,14 +208,31 @@ public class SettingsController {
         backbtn.setTranslateY(0);
     }
 
-    ////////////////
-    //TO BE EDITED//
-    ////////////////
-
     @FXML
-    private void RedirectToHome() {
+    private void RedirectToHome() throws IOException {
+        FXMLLoader l = new FXMLLoader(getClass().getResource("../Resources/Main.fxml"));
+        Parent x = l.load();
+        MainController mc= l.getController();
+        mc.init(timer.isSelected(),MistakeLimit.isSelected(),CheckMistake.isSelected(),UsedNum.isSelected(),Dup.isSelected(),HArea.isSelected(),HIdentical.isSelected());
+        Main.main.setScene(new Scene(x));
         Settings.getSettingsStage().close();
         Main.main.show();
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        timer.setSelected(MainController.Timer);
+        MistakeLimit.setSelected(MainController.MistakeLimit);
+        CheckMistake.setSelected(MainController.ACMistakes);
+        UsedNum.setSelected(MainController.HideUsed);
+        Dup.setSelected(MainController.HighDup);
+        HArea.setSelected(MainController.HighArea);
+        HIdentical.setSelected(MainController.HighIdentical);
+        SwitchTimer();
+        SwitchAutoCheck();
+        SwitchHArea();
+        SwitchHDuplicate();
+        SwitchHIdenticalNumbers();
+        SwitchHideNumbers();
+        SwitchLimit();
+    }
 }

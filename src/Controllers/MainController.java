@@ -4,10 +4,14 @@ import Main.Settings;
 import Main.Game;
 import Main.HighScores;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainController implements Initializable {
 
     @FXML
     private Label label;
@@ -18,6 +22,7 @@ public class MainController {
     @FXML
     private Button htpbtn;
 
+    public static boolean Timer=true,MistakeLimit=true,ACMistakes=true,HideUsed=true,HighDup=true,HighArea=true,HighIdentical=true;
     @FXML
     private void PlayPE() {
         playbtn.setTranslateY(4);
@@ -51,6 +56,7 @@ public class MainController {
         label.setTranslateY(0);
     }
 
+
     ////////////////
     //TO BE EDITED//
     ////////////////
@@ -71,4 +77,18 @@ public class MainController {
         Main.main.hide();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+    public void init(boolean Timer,boolean MistakeLimit,boolean ACMistakes,boolean HideUsed, boolean HighDup, boolean HighArea, boolean HighIdentical) {
+       MainController.Timer =Timer;
+       MainController.MistakeLimit =MistakeLimit;
+       MainController.ACMistakes =ACMistakes;
+       MainController.HideUsed =HideUsed;
+       MainController.HighDup =HighDup;
+       MainController.HighArea =HighArea;
+       MainController.HighIdentical =HighIdentical;
+
+
+    }
 }

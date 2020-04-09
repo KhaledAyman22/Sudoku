@@ -1,6 +1,8 @@
 package Controllers;
 
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Vector;
@@ -8,6 +10,10 @@ import java.util.Vector;
 public class Sudoku {
     private int [][]grid;
     private int lastNumber;
+    private   static List<TextField>Given=new ArrayList<>();
+    public static List<TextField> getGiven() {
+        return Given;
+    }
 
     Sudoku(){
         grid = new int [9][9];
@@ -299,7 +305,11 @@ public class Sudoku {
     void SettingData(List<TextField> x, int row){
         for (int i = 0; i < 9; i++)
         {
-            if (grid[row][i] != 0) x.get(i).setText(String.valueOf(grid[row][i]));
+            if (grid[row][i] != 0)
+            {
+                x.get(i).setText(String.valueOf(grid[row][i]));
+                Given.add(x.get(i));
+            }
         }
     }
 

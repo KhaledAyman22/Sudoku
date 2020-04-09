@@ -1,10 +1,8 @@
 package Main;
 
-import Controllers.GameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,7 +13,7 @@ public class Game {
     }
     public Game() throws Exception {
         GameStage=new Stage();
-        GameStage.initStyle(StageStyle.UNDECORATED);
+        GameStage.initStyle(StageStyle.DECORATED);
         Parent game = FXMLLoader.load(getClass().getResource("../Resources/Game.fxml"));
         GameStage.setResizable(false);
         GameStage.setTitle("Sudoku Game");
