@@ -1463,15 +1463,14 @@ public class GameController {
             // one object for the game
 
             Sudoku game = new Sudoku();
-            game.generate();
-            game.solve_grid();
+            game.Play();
             switch (difficulty)
             {
                 case "easy":{game.easy_mode();break;}
                 case "medium":{game.medium_mode();break;}
                 case "hard":{game.hard_mode();break;}
             }
-            game.call(row0,row1,row2,row3,row4,row5,row6,row7,row8);
+            game.SettingAllData(row0,row1,row2,row3,row4,row5,row6,row7,row8);
 
             for(int i=0;i<Sudoku.getGiven().size();i++)
             {

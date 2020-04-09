@@ -132,7 +132,7 @@ public class Sudoku {
     }
 
     private boolean valid_All(int row, int col, int val){
-        return (valid_box(row / 3, col / 3, val) && valid_col(col, val) && valid_row(row, val));
+        return valid_box(row / 3, col / 3, val) && valid_col(col, val) && valid_row(row, val);
     }
 
 
@@ -152,9 +152,9 @@ public class Sudoku {
             s1 = a * 3;
             a++;
 
-            for (int i = s1; i < s1+3; i++)
+            for (int i = s2; i < s2+3; i++)
             {
-                for (int j = s2; j < s2+3; j++)
+                for (int j = s1; j < s1+3; j++)
                 {
                     freq[grid[i][j]]++;
                 }
@@ -302,7 +302,7 @@ public class Sudoku {
         return false;
     }
 
-    void SettingData(List<TextField> x, int row){
+    void SettingRowData(List<TextField> x, int row){
         for (int i = 0; i < 9; i++)
         {
             if (grid[row][i] != 0)
@@ -314,18 +314,22 @@ public class Sudoku {
     }
 
 
-    void call(List<TextField> row0, List<TextField> row1 ,List<TextField> row2,List<TextField> row3 ,List<TextField> row4 ,
+    void SettingAllData(List<TextField> row0, List<TextField> row1 ,List<TextField> row2,List<TextField> row3 ,List<TextField> row4 ,
               List<TextField> row5, List<TextField> row6, List<TextField> row7, List<TextField> row8){
 
-        SettingData(row0,0);
-        SettingData(row1,1);
-        SettingData(row2,2);
-        SettingData(row3,3);
-        SettingData(row4,4);
-        SettingData(row5,5);
-        SettingData(row6,6);
-        SettingData(row7,7);
-        SettingData(row8,8);
+        SettingRowData(row0,0);
+        SettingRowData(row1,1);
+        SettingRowData(row2,2);
+        SettingRowData(row3,3);
+        SettingRowData(row4,4);
+        SettingRowData(row5,5);
+        SettingRowData(row6,6);
+        SettingRowData(row7,7);
+        SettingRowData(row8,8);
     }
 
+    public void Play (){
+        generate();
+        solve_grid();
+    }
 }
