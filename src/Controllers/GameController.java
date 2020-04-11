@@ -1015,7 +1015,7 @@ public class GameController {
                 } else {
                     if (notes.isSelected()) {
                         if (!x.getText().equals(""))
-                            DisableNumber(x.getText(), '-');
+                            delete(x);
                         x.setText("");
                         x.setPromptText(s);
                     } else {
@@ -1026,7 +1026,6 @@ public class GameController {
                         DisableNumber(s, '+');
                         x.setPromptText("");
                         x.setText(s);
-                        //check for mistakes if mistakes are on if = 3 vb.diable=true GameOver.visible=true
                         if (MainController.MistakeLimit) {
                             if (Mistakes == 3) {
                                 vb.setDisable(true);
@@ -1054,6 +1053,7 @@ public class GameController {
                       if (uno == 9) {
                           one.setDisable(true);
                           one.setSelected(false);
+                          SwitchOff(one);
                       }
                       break;
                   }
@@ -1062,6 +1062,7 @@ public class GameController {
                       if (dos == 9) {
                           two.setDisable(true);
                           two.setSelected(false);
+                          SwitchOff(two);
                       }
                       break;
                   }
@@ -1070,6 +1071,7 @@ public class GameController {
                       if (tres == 9) {
                           three.setDisable(true);
                           three.setSelected(false);
+                          SwitchOff(three);
                       }
                       break;
                   }
@@ -1078,6 +1080,7 @@ public class GameController {
                       if (quatro == 9) {
                           four.setDisable(true);
                           four.setSelected(false);
+                          SwitchOff(four);
                       }
                       break;
                   }
@@ -1086,6 +1089,7 @@ public class GameController {
                       if (cinco == 9) {
                           five.setDisable(true);
                           five.setSelected(false);
+                          SwitchOff(five);
                       }
                       break;
                   }
@@ -1094,6 +1098,7 @@ public class GameController {
                       if (seis == 9) {
                           six.setDisable(true);
                           six.setSelected(false);
+                          SwitchOff(six);
                       }
                       break;
                   }
@@ -1102,6 +1107,7 @@ public class GameController {
                       if (siete == 9) {
                           seven.setDisable(true);
                           seven.setSelected(false);
+                          SwitchOff(seven);
                       }
                       break;
                   }
@@ -1110,6 +1116,7 @@ public class GameController {
                       if (ocho == 9) {
                           eight.setDisable(true);
                           eight.setSelected(false);
+                          SwitchOff(eight);
                       }
                       break;
                   }
@@ -1118,6 +1125,7 @@ public class GameController {
                       if (nueve == 9) {
                           nine.setDisable(true);
                           nine.setSelected(false);
+                          SwitchOff(nine);
                       }
                       break;
                   }
@@ -1207,10 +1215,7 @@ public class GameController {
     private void HighlightRCB(TextField x) {
         //Resetting
         Reset();
-        if(current==previous && i==0)
-        {i++;return;}
-        else
-            i=0;
+
         //highlighting row,col,and box
         if(MainController.HighArea || MainController.HighDup) {
             HighlightR(getRow(current));
@@ -1219,6 +1224,11 @@ public class GameController {
         }
         if(MainController.HighIdentical)
             HighlightNumber();
+
+        if(current==previous && i==0)
+        {i++;Reset();}
+        else
+            i=0;
     }
     private void HighlightR(List<TextField> x) {
         HL(x);
@@ -1462,6 +1472,7 @@ public class GameController {
             setRowCol();
             // one object for the game
 
+            Sudoku.getGiven().clear();
             Sudoku game = new Sudoku();
             game.Play();
             switch (difficulty)
