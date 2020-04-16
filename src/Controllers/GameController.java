@@ -1058,7 +1058,7 @@ public class GameController {
         String s = name.getText();
         if (s.contains(" "))
             s = s.replace(" ", "_");
-        f.format("%s%s%s", score.getText() + " ", name.getText() + " ", time.getText());
+        f.format("%s%s%s", score.getText() + " ", s + " ", time.getText());
         f.close();
     }
 
@@ -1118,7 +1118,7 @@ public class GameController {
 
     private void delete(TextField x) {
         if (!x.getText().equals("")) {
-            HighlightRCB(x);
+            HighlightRCB();
             DisableNumber(x.getText(), '-');
             Check();
             Undo.push(new Pair<>(x, x.getText()));
@@ -1137,7 +1137,7 @@ public class GameController {
             try {
                 s = String.valueOf(EntryNumbers.getSelectedToggle().toString().charAt(EntryNumbers.getSelectedToggle().toString().length() - 2));
             } catch (Exception ignored) {
-                HighlightRCB(current);
+                HighlightRCB();
                 return;
             }
 
@@ -1168,11 +1168,11 @@ public class GameController {
                         }
                     }
                 }
-                HighlightRCB(current);
+                HighlightRCB();
             } catch (Exception ignored) {
             }
         } else
-            HighlightRCB(current);
+            HighlightRCB();
 
     }
 
@@ -1384,7 +1384,7 @@ public class GameController {
         }
     }
 
-    private void HighlightRCB(TextField x) {
+    private void HighlightRCB() {
         //Resetting
         Reset();
 
@@ -1447,7 +1447,8 @@ public class GameController {
                         else if (lists.get(i).get(j).getStyle().equals("-fx-background-color: #00e8f2") && found) {
                             lists.get(i).get(j).setStyle("-fx-background-color: #fc4e4e");
                             found = false;
-                        } else
+                        }
+                        else
                             lists.get(i).get(j).setStyle("-fx-background-color: #207bff");
                     }
                 } catch (Exception ignored) {
@@ -1596,7 +1597,7 @@ public class GameController {
             }
             Undo.peek().getKey().setPromptText("");
             Undo.peek().getKey().setText(Undo.peek().getValue());
-            HighlightRCB(current);
+            HighlightRCB();
             Undo.pop();
         }
     }
@@ -1732,24 +1733,20 @@ public class GameController {
         solve.setDisable(true);
         eraser.setDisable(true);
         //sfar l score w timer
-            try {
-                int[][] grid = new int[9][9];
-                List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
-                for (int i = 0; i < 9; i++) {
-                    for (int j = 0; j < 9; j++) {
-                        if (!x.get(i).get(j).getText().equals(""))
-                            grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
-                        else
-                            grid[i][j] = 0;
-                    }
-                }
-                game.setGrid(grid);
-                if (!game.solve_grid()){
-                    throw new NoSolution();
-                }
-            } catch (Exception ignored) {
-                throw new NoSolution();
-            }
+         int[][] grid = new int[9][9];
+         List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
+         for (int i = 0; i < 9; i++) {
+             for (int j = 0; j < 9; j++) {
+                 if (!x.get(i).get(j).getText().equals(""))
+                     grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
+                 else
+                     grid[i][j] = 0;
+             }
+         }
+         game.setGrid(grid);
+         if (!game.solve_grid()){
+             throw new NoSolution();
+         }
 
             game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
             Reset();
@@ -1762,7 +1759,12 @@ class NoSolution extends Exception {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setResizable(false);
         alert.setTitle("UNSOLVABLE");
-        alert.setContentText("Solver Failed");
+        alert.setHeaderText("SOLVER FAILED");
+        alert.setContentText("YOUR GRID DOESN'T APPLY TO SUDOKU RULES");
+        alert.initOwner(Game.getGameStage());
+        alert.setHeight(150);
         alert.showAndWait();
+            Game.getGameStage().close();
+            Main.main.show();
     }
 }
