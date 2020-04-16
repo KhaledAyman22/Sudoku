@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.util.Pair;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -1690,6 +1689,7 @@ public class GameController {
             solve.setDisable(false);
             TimerBox.setVisible(MainController.Timer);
             MistakesBox.setVisible(MainController.MistakeLimit);
+            create.setVisible(false);
             last = null;
         }
     }
@@ -1732,33 +1732,37 @@ public class GameController {
         solve.setDisable(true);
         eraser.setDisable(true);
         //sfar l score w timer
-        //solve
-        try {
-            int[][] grid = new int[9][9];
-            List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    if(!x.get(i).get(j).getText().equals(""))
-                        grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
-                    else
-                        grid[i][j] = 0;
+        if (game.getGrid() == null) {
+            try {
+                int[][] grid = new int[9][9];
+                List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        if (!x.get(i).get(j).getText().equals(""))
+                            grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
+                        else
+                            grid[i][j] = 0;
+                    }
                 }
+                game.setGrid(grid);
+            } catch (Exception ignored) {
+                throw new NoSolution();
             }
-            game.setGrid(grid);
+        }
+
             game.solve_grid();
             game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
             Reset();
-        } catch (Exception ignored) {
-            throw new NoSolution();
-        }
+
     }
 }
 
 class NoSolution extends Exception{
     NoSolution(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setResizable(false);
         alert.setTitle("UNSOLVABLE");
         alert.setContentText("Solver Failed");
         alert.showAndWait();
     }
-}
+}//lma b3ml error w ams7 w aktb l atktb byb2a a7mr
