@@ -18,9 +18,9 @@ public class MainController implements Initializable {
     @FXML
     private Button playbtn;
     @FXML
-    private Button hsbtn;
+    private Button opbtn;
     @FXML
-    private Button htpbtn;
+    private Button hsbtn;
 
     public static boolean Timer=true,MistakeLimit=true,ACMistakes=true,HideUsed=true,HighDup=true,HighArea=true,HighIdentical=true;
     @FXML
@@ -32,20 +32,12 @@ public class MainController implements Initializable {
         playbtn.setTranslateY(0);
     }
     @FXML
-    private void HSPE() {
-        hsbtn.setTranslateY(4);
-    }
-    @FXML
-    private void HSRE() {
-        hsbtn.setTranslateY(0);
-    }
-    @FXML
     private void OPE() {
-        htpbtn.setTranslateY(4);
+        opbtn.setTranslateY(4);
     }
     @FXML
     private void ORE() {
-        htpbtn.setTranslateY(0);
+        opbtn.setTranslateY(0);
     }
     @FXML
     private void Jump() {
@@ -55,7 +47,14 @@ public class MainController implements Initializable {
     private void Return() {
         label.setTranslateY(0);
     }
-
+    @FXML
+    private void HSPE( ) {
+        hsbtn.setTranslateY(0);
+    }
+    @FXML
+    private void HSRE() {
+        hsbtn.setTranslateY(0);
+    }
 
     ////////////////
     //TO BE EDITED//
@@ -76,7 +75,6 @@ public class MainController implements Initializable {
         new HighScores();
         Main.main.hide();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -88,7 +86,5 @@ public class MainController implements Initializable {
        MainController.HighDup =HighDup;
        MainController.HighArea =HighArea;
        MainController.HighIdentical =HighIdentical;
-
-
     }
 }

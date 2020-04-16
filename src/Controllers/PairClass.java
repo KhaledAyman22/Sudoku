@@ -15,7 +15,5 @@ public class PairClass {
         first = x;
         second = y;
     }
-
-
 }
 

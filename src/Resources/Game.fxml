@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" cache="true" cacheHint="QUALITY" depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="800.0" stylesheets="@../CSS/Game.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
+<Pane cache="true" cacheHint="QUALITY" depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="800.0" stylesheets="@../CSS/Game.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GameController">
    <HBox fx:id="vb1" alignment="CENTER_LEFT" disable="true" layoutY="-1.0" prefHeight="3.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
       <Button fx:id="backbtn" layoutX="20.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#RedirectToHome" onMousePressed="#BPE" onMouseReleased="#BRE" prefHeight="56.0" prefWidth="41.0">
          <graphic>
@@ -63,7 +63,7 @@
    </HBox>
    <VBox fx:id="vb" alignment="BOTTOM_CENTER" disable="true" layoutY="55.0" prefHeight="686.0" prefWidth="800.0">
       <Separator prefHeight="0.0" prefWidth="800.0" />
-      <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
+      <HBox fx:id="vb2" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #f5f5f5;">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -156,7 +156,7 @@
             </cursor>
          </Button>
          <Pane prefHeight="500.0" prefWidth="500.0">
-            <GridPane  alignment="CENTER" hgap="5.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -240,7 +240,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutX="170.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="170.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -324,7 +324,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="3.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -408,7 +408,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -492,7 +492,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutX="171.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="171.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -576,7 +576,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="173.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -660,7 +660,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -744,7 +744,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutX="170.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="170.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -828,7 +828,7 @@
                   </font>
                </TextField>
             </GridPane>
-            <GridPane  alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="341.0" layoutY="340.0" prefHeight="154.0" prefWidth="158.8" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1110,7 +1110,7 @@
          <DropShadow color="#1e63cc" height="19.0" offsetY="10.0" width="23.0" />
       </effect>
    </Button>
-   <ToggleButton fx:id="easy" layoutX="191.0" layoutY="399.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #00e8f2; -fx-background-radius: 15;" text="EASY" textFill="WHITE">
+   <ToggleButton fx:id="easy" layoutX="191.0" layoutY="399.0" mnemonicParsing="false" onMousePressed="#EPE" onMouseReleased="#ERE" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #247dfb; -fx-background-radius: 15;" text="EASY" textFill="WHITE">
       <font>
          <Font name="Segoe UI Black" size="15.0" />
       </font>
@@ -1118,92 +1118,100 @@
          <ToggleGroup fx:id="level" />
       </toggleGroup>
       <effect>
-         <DropShadow color="#03b3cb" height="16.08" offsetY="7.0" radius="7.577500000000001" spread="0.08" width="16.23" />
+         <DropShadow color="#1e63cc" height="16.16" offsetY="7.0" radius="7.5975" spread="0.08" width="16.23" />
       </effect>
    </ToggleButton>
-   <ToggleButton fx:id="medium" layoutX="351.0" layoutY="398.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #00e8f2; -fx-background-radius: 15;" text="MEDIUM" textFill="WHITE" toggleGroup="$level">
+   <ToggleButton fx:id="medium" layoutX="351.0" layoutY="398.0" mnemonicParsing="false" onMousePressed="#MPE" onMouseReleased="#MRE" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #247dfb; -fx-background-radius: 15;" text="MEDIUM" textFill="WHITE" toggleGroup="$level">
       <font>
          <Font name="Segoe UI Black" size="15.0" />
       </font>
       <effect>
-         <DropShadow color="#03b3cb" height="16.08" offsetY="7.0" radius="7.577500000000001" spread="0.08" width="16.23" />
+         <DropShadow color="#1e63cc" height="16.16" offsetY="7.0" radius="7.5975" spread="0.08" width="16.23" />
       </effect>
    </ToggleButton>
-   <ToggleButton fx:id="hard" layoutX="507.0" layoutY="398.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #00e8f2; -fx-background-radius: 15;" text="HARD" textFill="WHITE" toggleGroup="$level">
+   <ToggleButton fx:id="hard" layoutX="507.0" layoutY="398.0" mnemonicParsing="false" onMousePressed="#HPE" onMouseReleased="#HRE" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #247dfb; -fx-background-radius: 15;" text="HARD" textFill="WHITE" toggleGroup="$level">
       <font>
          <Font name="Segoe UI Black" size="15.0" />
       </font>
       <effect>
-         <DropShadow color="#03b3cb" height="16.08" offsetY="7.0" radius="7.577500000000001" spread="0.08" width="16.23" />
+         <DropShadow color="#1e63cc" height="16.16" offsetY="7.0" radius="7.5975" spread="0.08" width="16.23" />
       </effect>
    </ToggleButton>
    <ImageView fx:id="GameOver" fitHeight="549.0" fitWidth="800.0" layoutX="118.0" layoutY="93.0" preserveRatio="true" visible="false">
       <Image url="@../images/GameOver.png" />
    </ImageView>
-   <ImageView fx:id="Won" fitHeight="549.0" fitWidth="800.0" layoutX="117.0" layoutY="14.0" preserveRatio="true"
-              visible="false">
-      <Image url="@../images/Won.png"/>
+   <ImageView fx:id="Won" fitHeight="549.0" fitWidth="800.0" layoutX="117.0" layoutY="14.0" preserveRatio="true" visible="false">
+      <Image url="@../images/Won.png" />
    </ImageView>
-   <VBox fx:id="WonBox" layoutX="218.0" layoutY="541.0" prefHeight="104.0" prefWidth="364.0"
-         style="-fx-background-color: #207bff; -fx-background-radius: 25;" visible="false">
+   <VBox fx:id="WonBox" layoutX="218.0" layoutY="541.0" prefHeight="104.0" prefWidth="364.0" style="-fx-background-color: #207bff; -fx-background-radius: 25;" visible="false">
       <HBox alignment="CENTER" prefHeight="51.0" prefWidth="364.0">
          <Label text="Score" textFill="WHITE">
             <font>
-               <Font name="Segoe UI Black" size="21.0"/>
+               <Font name="Segoe UI Black" size="21.0" />
             </font>
          </Label>
          <Label fx:id="score" alignment="CENTER" prefHeight="31.0" prefWidth="85.0" textFill="WHITE">
             <HBox.margin>
-               <Insets left="10.0"/>
+               <Insets left="10.0" />
             </HBox.margin>
             <font>
-               <Font name="Segoe UI Black" size="17.0"/>
+               <Font name="Segoe UI Black" size="17.0" />
             </font>
          </Label>
          <Label layoutX="134.0" layoutY="18.0" text="Time" textFill="WHITE">
             <font>
-               <Font name="Segoe UI Black" size="21.0"/>
+               <Font name="Segoe UI Black" size="21.0" />
             </font>
             <HBox.margin>
-               <Insets left="10.0"/>
+               <Insets left="10.0" />
             </HBox.margin>
          </Label>
          <Label fx:id="time" alignment="CENTER" prefHeight="31.0" prefWidth="85.0" textFill="WHITE">
             <HBox.margin>
-               <Insets left="10.0"/>
+               <Insets left="10.0" />
             </HBox.margin>
             <font>
-               <Font name="Segoe UI Black" size="17.0"/>
+               <Font name="Segoe UI Black" size="17.0" />
             </font>
          </Label>
       </HBox>
-      <Separator prefWidth="200.0"/>
+      <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" prefHeight="54.0" prefWidth="364.0">
-         <TextField fx:id="name" focusTraversable="false" maxWidth="219.0" prefHeight="35.0" prefWidth="159.0"
-                    promptText="Name" style="-fx-background-color: #e3e3e3;" >
+         <TextField fx:id="name" focusTraversable="false" maxWidth="219.0" prefHeight="35.0" prefWidth="159.0" promptText="Name" style="-fx-background-color: #e3e3e3;">
             <font>
-               <Font name="Segoe UI Black" size="15.0"/>
+               <Font name="Segoe UI Black" size="15.0" />
             </font>
             <HBox.margin>
-               <Insets/>
+               <Insets />
             </HBox.margin>
          </TextField>
-         <Button fx:id="ok" mnemonicParsing="false" onMouseClicked="#ok" onMousePressed="#okPE"
-                 onMouseReleased="#okRE" prefHeight="31.0" prefWidth="61.0" style="-fx-background-color: #8452ff;"
-                 text="OK" textFill="WHITE">
+         <Button fx:id="ok" mnemonicParsing="false" onMouseClicked="#ok" onMousePressed="#okPE" onMouseReleased="#okRE" prefHeight="31.0" prefWidth="61.0" style="-fx-background-color: #8452ff;" text="OK" textFill="WHITE">
             <font>
-               <Font name="Segoe UI Black" size="15.0"/>
+               <Font name="Segoe UI Black" size="15.0" />
             </font>
             <effect>
-               <DropShadow color="#7238ff" height="15.62" offsetY="6.0" radius="7.4625" width="16.23"/>
+               <DropShadow color="#7238ff" height="15.62" offsetY="6.0" radius="7.4625" width="16.23" />
             </effect>
             <HBox.margin>
-               <Insets bottom="10.0" left="30.0"/>
+               <Insets bottom="10.0" left="30.0" />
             </HBox.margin>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </Button>
       </HBox>
    </VBox>
+   <ToggleButton fx:id="create" layoutX="352.0" layoutY="467.0" mnemonicParsing="false" onMousePressed="#CPE" onMouseReleased="#CRE" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #247dfb; -fx-background-radius: 15;" text="CREATE" textFill="WHITE" toggleGroup="$level">
+      <font>
+         <Font name="Segoe UI Black" size="15.0" />
+      </font>
+      <effect>
+         <DropShadow color="#1e63cc" height="16.16" offsetY="7.0" radius="7.5975" spread="0.08" width="16.23" />
+      </effect>
+   </ToggleButton>
+   <Button fx:id="solve" alignment="CENTER" disable="true" layoutX="770.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#solveSudoku" style="-fx-background-color: #247dfb; -fx-background-radius: 5;" text="S&#10;O&#10;L&#10;V&#10;E" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Black" size="14.0" />
+      </font>
+   </Button>
 </Pane>

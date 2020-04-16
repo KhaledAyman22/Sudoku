@@ -1,6 +1,7 @@
 package Controllers;
 
 import javafx.scene.control.TextField;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +10,18 @@ import java.util.Vector;
 
 public class Sudoku {
     private int [][]grid;
+    private int [][]copy;
     private int lastNumber;
-    private   static List<TextField>Given=new ArrayList<>();
+    private static List<TextField>Given=new ArrayList<>();
     public static List<TextField> getGiven() {
         return Given;
     }
 
     Sudoku(){
         grid = new int [9][9];
+        copy = new int [9][9];
     }
+
 
     // check the row depending on certain value and row number
     private boolean valid_row(int row_number, int val)
@@ -89,7 +93,7 @@ public class Sudoku {
 
     }
 
-    // check if the row have any repeated value in any row
+    // check if the row have any repeated value
     private boolean row_valid()
     {
         for (int j = 0; j < 9; j++)
@@ -108,7 +112,7 @@ public class Sudoku {
         return  true;
     }
 
-    // check if the column have any repeated value in any col
+    // check if the column have any repeated value
     private boolean col_valid()
     {
         for (int j = 0; j < 9; j++)
@@ -126,15 +130,6 @@ public class Sudoku {
         }
         return true;
     }
-
-    private boolean All_valid(){
-        return box_valid() && row_valid() && col_valid();
-    }
-
-    private boolean valid_All(int row, int col, int val){
-        return valid_box(row / 3, col / 3, val) && valid_col(col, val) && valid_row(row, val);
-    }
-
 
     // check if the box have any repeated value in any box
     private boolean box_valid(){
@@ -168,8 +163,16 @@ public class Sudoku {
         return true;
     }
 
+    private boolean All_valid(){
+        return box_valid() && row_valid() && col_valid();
+    }
+
+    private boolean valid_All(int row, int col, int val){
+        return valid_box(row / 3, col / 3, val) && valid_col(col, val) && valid_row(row, val);
+    }
+
     // generate some values in the grid randomly and put in random position to change the grid each time
-    public void generate()
+    private void generate()
     {
         Random r = new Random();
         grid[0][0] = r.nextInt(9) + 1;
@@ -192,7 +195,6 @@ public class Sudoku {
     {
         for (PairClass val : v)
         {
-
             if (val.first == p.first && val.second == p.second) return false;
         }
         return true;
@@ -218,11 +220,19 @@ public class Sudoku {
             }
             grid[pos1][pos2] = saved;
         }
+        copy();
         for (int i = 0; i < required; i++)
         {
             PairClass pair = visited.get(i);
             grid[pair.first][pair.second] = 0;
         }
+    }
+
+    void copy (){
+        for(int i=0;i<9;i++)
+        {
+            System.arraycopy(grid[i], 0, copy[i], 0, 9);
+        }//la de btcopy 1 dimension hngarp
     }
 
     // function to handle the medium mode
@@ -247,6 +257,7 @@ public class Sudoku {
             }
             grid[pos1][pos2] = saved;
         }
+        copy();
         for (int i = 0; i < required; i++)
         {
             PairClass pair = visited.get(i);
@@ -275,6 +286,7 @@ public class Sudoku {
             }
             grid[pos1][pos2] = saved;
         }
+        copy();
         for (int i = 0; i < required; i++)
         {
             PairClass pair = visited.get(i);
@@ -302,7 +314,7 @@ public class Sudoku {
         return false;
     }
 
-    void SettingRowData(List<TextField> x, int row){
+    private void SettingRowData(List<TextField> x, int row,int[][] grid){
         for (int i = 0; i < 9; i++)
         {
             if (grid[row][i] != 0)
@@ -313,23 +325,32 @@ public class Sudoku {
         }
     }
 
-
     void SettingAllData(List<TextField> row0, List<TextField> row1 ,List<TextField> row2,List<TextField> row3 ,List<TextField> row4 ,
-              List<TextField> row5, List<TextField> row6, List<TextField> row7, List<TextField> row8){
+              List<TextField> row5, List<TextField> row6, List<TextField> row7, List<TextField> row8,int x){
 
-        SettingRowData(row0,0);
-        SettingRowData(row1,1);
-        SettingRowData(row2,2);
-        SettingRowData(row3,3);
-        SettingRowData(row4,4);
-        SettingRowData(row5,5);
-        SettingRowData(row6,6);
-        SettingRowData(row7,7);
-        SettingRowData(row8,8);
+        int [][] g = grid;
+        if (x==1) g = copy;
+        SettingRowData(row0,0,g);
+        SettingRowData(row1,1,g);
+        SettingRowData(row2,2,g);
+        SettingRowData(row3,3,g);
+        SettingRowData(row4,4,g);
+        SettingRowData(row5,5,g);
+        SettingRowData(row6,6,g);
+        SettingRowData(row7,7,g);
+        SettingRowData(row8,8,g);
     }
 
     public void Play (){
         generate();
         solve_grid();
+    }
+
+    public int[][]getGrid()
+    {
+        return copy;
+    }
+    public void setGrid(int[][] grid) {
+        this.grid = grid;
     }
 }
