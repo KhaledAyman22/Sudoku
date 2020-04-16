@@ -1732,7 +1732,6 @@ public class GameController {
         solve.setDisable(true);
         eraser.setDisable(true);
         //sfar l score w timer
-        if (game.getGrid() == null) {
             try {
                 int[][] grid = new int[9][9];
                 List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
@@ -1745,24 +1744,25 @@ public class GameController {
                     }
                 }
                 game.setGrid(grid);
+                if (!game.solve_grid()){
+                    throw new NoSolution();
+                }
             } catch (Exception ignored) {
                 throw new NoSolution();
             }
-        }
 
-            game.solve_grid();
             game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
             Reset();
 
     }
 }
 
-class NoSolution extends Exception{
-    NoSolution(){
+class NoSolution extends Exception {
+    NoSolution() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setResizable(false);
         alert.setTitle("UNSOLVABLE");
         alert.setContentText("Solver Failed");
         alert.showAndWait();
     }
-}//lma b3ml error w ams7 w aktb l atktb byb2a a7mr
+}

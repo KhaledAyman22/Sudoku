@@ -22,5 +22,6 @@ public class Game {
         GameStage.setTitle("Sudoku Game");
         GameStage.setScene(new Scene(game));
         GameStage.show();
+
     }
 }

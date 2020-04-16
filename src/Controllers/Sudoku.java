@@ -1,8 +1,6 @@
 package Controllers;
 
 import javafx.scene.control.TextField;
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -107,7 +105,6 @@ public class Sudoku {
             {
                 if (freq[i] > 1) return false;
             }
-            if (freq[0] > 0) return  false;
         }
         return  true;
     }
@@ -126,7 +123,6 @@ public class Sudoku {
             {
                 if (freq[i] > 1) return false;
             }
-            if (freq[0] > 0) return  false;
         }
         return true;
     }
@@ -158,7 +154,6 @@ public class Sudoku {
                     if (freq[v] > 1) return false;
                 }
             }
-            if (freq[0] > 0) return false;
         }
         return true;
     }
@@ -303,7 +298,7 @@ public class Sudoku {
         int[] arr = get_next();
         for (int i = 1; i <= 9; i++)
         {
-            if (valid_All(arr[0],arr[1],i))
+            if (valid_All(arr[0],arr[1],i) && All_valid())
             {
                 lastNumber = i;
                 grid[arr[0]][arr[1]] = i;
@@ -314,7 +309,7 @@ public class Sudoku {
         return false;
     }
 
-    private void SettingRowData(List<TextField> x, int row,int[][] grid){
+    private void SettingRowData(List<TextField> x, int row, int[][] grid){
         for (int i = 0; i < 9; i++)
         {
             if (grid[row][i] != 0)
@@ -326,10 +321,10 @@ public class Sudoku {
     }
 
     void SettingAllData(List<TextField> row0, List<TextField> row1 ,List<TextField> row2,List<TextField> row3 ,List<TextField> row4 ,
-              List<TextField> row5, List<TextField> row6, List<TextField> row7, List<TextField> row8,int x){
+              List<TextField> row5, List<TextField> row6, List<TextField> row7, List<TextField> row8, int x){
 
         int [][] g = grid;
-        if (x==1) g = copy;
+        if (x == 1) g = copy;
         SettingRowData(row0,0,g);
         SettingRowData(row1,1,g);
         SettingRowData(row2,2,g);
@@ -346,10 +341,7 @@ public class Sudoku {
         solve_grid();
     }
 
-    public int[][]getGrid()
-    {
-        return copy;
-    }
+
     public void setGrid(int[][] grid) {
         this.grid = grid;
     }
