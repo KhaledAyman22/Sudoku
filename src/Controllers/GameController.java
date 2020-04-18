@@ -1173,7 +1173,6 @@ public class GameController {
             }
         } else
             HighlightRCB();
-
     }
 
     private void DisableNumber(String x, char y) {
@@ -1700,9 +1699,6 @@ public class GameController {
     // Hazem apply won case,check for mistake if there increment Mistakes change label mistakes to Mistakes where Mistakes is the number of mistakes if Mistakes==3 set gameover visible
     // David Timer,PauseTimer
     // Amgad Score score will be calculated at the end during the game any cell written +50 any cell deleted -50 if he won final score will be  ((score*1000)/time in seconds *NOT TIMER_SEC , (TIMER_SEC+60*TIMER_MIN)*) neglect decimals
-    ////////////////
-    //TO BE EDITED//
-    ////////////////
 
     @FXML
     private void Hint() {
@@ -1752,19 +1748,20 @@ public class GameController {
             Reset();
 
     }
-}
 
-class NoSolution extends Exception {
-    NoSolution() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setResizable(false);
-        alert.setTitle("UNSOLVABLE");
-        alert.setHeaderText("SOLVER FAILED");
-        alert.setContentText("YOUR GRID DOESN'T APPLY TO SUDOKU RULES");
-        alert.initOwner(Game.getGameStage());
-        alert.setHeight(150);
-        alert.showAndWait();
+    private class NoSolution extends Exception {
+        NoSolution() {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setResizable(false);
+            alert.setTitle("UNSOLVABLE");
+            alert.setHeaderText("SOLVER FAILED");
+            alert.setContentText("YOUR GRID DOESN'T APPLY TO SUDOKU RULES");
+            alert.initOwner(Game.getGameStage());
+            alert.setHeight(150);
+            alert.showAndWait();
             Game.getGameStage().close();
             Main.main.show();
+        }
     }
 }
+

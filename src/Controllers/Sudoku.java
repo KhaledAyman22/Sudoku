@@ -345,4 +345,6 @@ public class Sudoku {
     public void setGrid(int[][] grid) {
         this.grid = grid;
     }
+
+    public int[][] getCopy(){return copy;}
 }
