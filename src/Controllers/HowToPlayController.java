@@ -24,7 +24,6 @@ public class HowToPlayController {
 
     @FXML
     private void RedirectToGame() {
-        //DONT forget to pause the timer if is on "option turned on by player"
         HowToPlay.getHowToPlayStage().close();
         Game.getGameStage().setOpacity(1);
     }

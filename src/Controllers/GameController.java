@@ -1572,15 +1572,18 @@ public class GameController {
 
     @FXML
     private void RedirectToHTP() throws Exception {
-        if(timer)
-            timer=!timer;
-        PauseTimer();
-        new HowToPlay();
-        Game.getGameStage().setOpacity(0.7);
-        HowToPlay.getHowToPlayStage().setOnHiding(windowEvent -> {
-            if(timer)
-                timer=!timer;
-            PauseTimer();});
+        if (timer){
+            timer=false;
+            PauseTimer();
+            new HowToPlay();
+            Game.getGameStage().setOpacity(0.7);
+            HowToPlay.getHowToPlayStage().setOnHiding(windowEvent -> {
+                timer= true;
+                PauseTimer();});
+        } else{
+            new HowToPlay();
+            Game.getGameStage().setOpacity(0.7);
+        }
     }
 
     @FXML
@@ -1743,7 +1746,7 @@ public class GameController {
                     }
                 });
             }
-        }, 1000, 1000);
+        }, 0, 1000);
 
     }
 
