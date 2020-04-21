@@ -27,6 +27,5 @@ public class HowToPlayController {
         //DONT forget to pause the timer if is on "option turned on by player"
         HowToPlay.getHowToPlayStage().close();
         Game.getGameStage().setOpacity(1);
-        GameController.PauseTimer();
     }
 }

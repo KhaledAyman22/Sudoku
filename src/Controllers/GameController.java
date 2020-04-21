@@ -4,6 +4,7 @@ import Main.HowToPlay;
 import Main.HighScores;
 import Main.Game;
 import Main.Main;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -1046,6 +1047,7 @@ public class GameController {
         setText(r8c8);
     }
 
+    int  sec=0,min=0;
     int Mistakes = 0;
     List<TextField> r, c;
     int w1 = 0, w2 = 0, w3 = 0;
@@ -1555,6 +1557,7 @@ public class GameController {
 
     @FXML
     public void PauseTimerEvent() {
+        timer = !timer;
         PauseTimer();
         Image i;
         if (!timer)
@@ -1569,9 +1572,15 @@ public class GameController {
 
     @FXML
     private void RedirectToHTP() throws Exception {
+        if(timer)
+            timer=!timer;
         PauseTimer();
         new HowToPlay();
         Game.getGameStage().setOpacity(0.7);
+        HowToPlay.getHowToPlayStage().setOnHiding(windowEvent -> {
+            if(timer)
+                timer=!timer;
+            PauseTimer();});
     }
 
     @FXML
@@ -1583,7 +1592,7 @@ public class GameController {
     @FXML
     private void Undo() {
         //preform undo
-        if (!Undo.isEmpty()) {                                                              //lw l stack b null dis deleted delete set
+        if (!Undo.isEmpty()) {
             current = Undo.peek().getKey();
             if (Undo.peek().getKey().getText().equals(""))
                 DisableNumber(Undo.peek().getValue(), '+');
@@ -1649,7 +1658,8 @@ public class GameController {
             play_pause.setDisable(true);
             howTobtn.setDisable(true);
             last = null;
-        } else {
+        }
+        else {
             if (easy.isSelected())
                 difficulty = "easy";
             else if (medium.isSelected())
@@ -1691,6 +1701,7 @@ public class GameController {
             MistakesBox.setVisible(MainController.MistakeLimit);
             create.setVisible(false);
             last = null;
+            PauseTimer();
         }
     }
 
@@ -1706,14 +1717,36 @@ public class GameController {
         //give hint "reveal one random cell solution" MAKE SURE random output isn't already given
     }
 
-    public static void PauseTimer() {
-        timer = !timer;
-        if (!timer) {
-            //stop counting
-        } else {
-            //count
-        }
+    public void PauseTimer() {
+        Timer Game_Timer=new Timer();
+        Game_Timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if (!timer)
+                        Game_Timer.cancel();
+                    if (timer) {
+
+                        if (sec == 59) {
+                            min++;
+                            sec = 0;
+                        }
+                        if (min < 10) {
+                            Timer_min.setText("0" + min);
+                        } else
+                            Timer_min.setText(String.valueOf(min));
+                        if (sec < 10) {
+                            Timer_sec.setText("0" + sec);
+                        } else
+                            Timer_sec.setText(String.valueOf(sec));
+                        sec++;
+                    }
+                });
+            }
+        }, 1000, 1000);
+
     }
+
 
     public void solveSudoku() throws NoSolution {
         one.setDisable(true);
@@ -1729,23 +1762,23 @@ public class GameController {
         solve.setDisable(true);
         eraser.setDisable(true);
         //sfar l score w timer
-         int[][] grid = new int[9][9];
-         List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
-         for (int i = 0; i < 9; i++) {
-             for (int j = 0; j < 9; j++) {
-                 if (!x.get(i).get(j).getText().equals(""))
-                     grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
-                 else
-                     grid[i][j] = 0;
-             }
-         }
-         game.setGrid(grid);
-         if (!game.solve_grid()){
-             throw new NoSolution();
-         }
+        int[][] grid = new int[9][9];
+        List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (!x.get(i).get(j).getText().equals(""))
+                    grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
+                else
+                    grid[i][j] = 0;
+            }
+        }
+        game.setGrid(grid);
+        if (!game.solve_grid()){
+            throw new NoSolution();
+        }
 
-            game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
-            Reset();
+        game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
+        Reset();
 
     }
 
