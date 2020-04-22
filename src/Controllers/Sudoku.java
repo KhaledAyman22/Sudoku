@@ -227,7 +227,7 @@ public class Sudoku {
         for(int i=0;i<9;i++)
         {
             System.arraycopy(grid[i], 0, copy[i], 0, 9);
-        }//la de btcopy 1 dimension hngarp
+        }
     }
 
     // function to handle the medium mode
@@ -315,6 +315,7 @@ public class Sudoku {
             if (grid[row][i] != 0)
             {
                 x.get(i).setText(String.valueOf(grid[row][i]));
+                x.get(i).setStyle("-fx-background-color: #207bff");
                 Given.add(x.get(i));
             }
         }

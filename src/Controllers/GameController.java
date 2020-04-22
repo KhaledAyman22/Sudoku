@@ -295,14 +295,6 @@ public class GameController {
     int uno = 0, dos = 0, tres = 0, quatro = 0, cinco = 0, seis = 0, siete = 0, ocho = 0, nueve = 0;
 
     //SETTERS & GETTERS
-    public Button getPlay_pause() {
-        return play_pause;
-    }
-
-    public void setPlay_pause(Button play_pause) {
-        this.play_pause = play_pause;
-    }
-
     public Label getTimer_min() {
         return Timer_min;
     }
@@ -323,9 +315,6 @@ public class GameController {
         return Score;
     }
 
-    public void setScore(Label score) {
-        Score = score;
-    }
 
     //EFFECTS
     @FXML
@@ -1054,6 +1043,8 @@ public class GameController {
     TextField t1 = null, t2 = null, t3 = null;
     Stack<Pair<TextField, String>> Undo = new Stack<>();
     String difficulty;
+    private int countScore=0;
+    String mode;
 
     private void SaveData() throws FileNotFoundException {
         Formatter f = new Formatter(difficulty + ".txt");
@@ -1126,6 +1117,11 @@ public class GameController {
             Undo.push(new Pair<>(x, x.getText()));
             x.setText("");
             x.setPromptText("");
+            //Amgad
+            countScore-=50;
+            Score.setText(String.valueOf(countScore));
+            //.Amgad
+
         } else {
             Reset();
         }
@@ -1154,12 +1150,15 @@ public class GameController {
                         x.setPromptText(s);
                     } else {
                         if (!x.getText().equals("") && !x.getText().equals(s))
-                            delete(current);
+                        {delete(current);DisableNumber(s, '+');countScore+=50;}
                         else if (!x.getText().equals(s))
-                            Undo.push(new Pair<>(x, ""));
-                        DisableNumber(s, '+');
+                        {Undo.push(new Pair<>(x, ""));DisableNumber(s, '+');countScore+=50;}
                         x.setPromptText("");
                         x.setText(s);
+                        //Amgad
+
+                        Score.setText(String.valueOf(countScore));
+                        //.amgad
                         if (MainController.MistakeLimit) {
                             if (Mistakes == 3) {
                                 vb.setDisable(true);
@@ -1168,6 +1167,7 @@ public class GameController {
                                 howTobtn.setDisable(true);
                             }
                         }
+
                     }
                 }
                 HighlightRCB();
@@ -1263,6 +1263,7 @@ public class GameController {
                         break;
                     }
                 }
+
             } else if (y == '-') {
                 switch (x) {
                     case "1": {
@@ -1312,7 +1313,10 @@ public class GameController {
                     }
                 }
             }
+
+
         }
+
     }
 
     private List<TextField> getRow(TextField x) {
@@ -1597,19 +1601,33 @@ public class GameController {
         //preform undo
         if (!Undo.isEmpty()) {
             current = Undo.peek().getKey();
-            if (Undo.peek().getKey().getText().equals(""))
+            if (Undo.peek().getKey().getText().equals("")) {
                 DisableNumber(Undo.peek().getValue(), '+');
+                //amgad
+                countScore+=50;
+                Score.setText(String.valueOf(countScore));
+                //amgad
+            }
             else {
                 Reset();
                 delete(current);
                 Undo.pop();
                 if (!Undo.peek().getValue().equals(""))
+                {
                     DisableNumber(Undo.peek().getValue(), '+');
+                    //amgad
+                    countScore+=50;
+                    Score.setText(String.valueOf(countScore));
+                    //amgad
+                }
+
             }
             Undo.peek().getKey().setPromptText("");
             Undo.peek().getKey().setText(Undo.peek().getValue());
             HighlightRCB();
             Undo.pop();
+
+
         }
     }
 
@@ -1626,11 +1644,11 @@ public class GameController {
 
     @FXML
     private void Won() {
+        finalScore();
         Won.setVisible(true);
         WonBox.setVisible(true);
         vb.setDisable(true);
         vb1.setDisable(true);
-        score.setText(Score.getText());
         time.setText(Timer_min.getText() + ":" + Timer_sec.getText());
     }
 
@@ -1644,6 +1662,7 @@ public class GameController {
             hard.setTranslateY(0);
         }
         else if (create.isSelected()) {
+            mode="create";
             setRowCol();
             vb.setDisable(false);
             vb1.setDisable(false);
@@ -1663,6 +1682,7 @@ public class GameController {
             last = null;
         }
         else {
+            mode="play";
             if (easy.isSelected())
                 difficulty = "easy";
             else if (medium.isSelected())
@@ -1708,16 +1728,62 @@ public class GameController {
         }
     }
 
+    public void finalScore() {
+        int FinalScore;
+        FinalScore=(Integer.parseInt(Score.getText())*1000)/(Integer.parseInt(getTimer_sec().getText())+60*Integer.parseInt(getTimer_min().getText()));
+        score.setText(String.valueOf(FinalScore));
+    }
 
-    //TODO
-    // Hazem apply won case,check for mistake if there increment Mistakes change label mistakes to Mistakes where Mistakes is the number of mistakes if Mistakes==3 set gameover visible
-    // David Timer,PauseTimer
-    // Amgad Score score will be calculated at the end during the game any cell written +50 any cell deleted -50 if he won final score will be  ((score*1000)/time in seconds *NOT TIMER_SEC , (TIMER_SEC+60*TIMER_MIN)*) neglect decimals
+    public void solveSudoku() throws NoSolution {
+        one.setDisable(true);
+        two.setDisable(true);
+        three.setDisable(true);
+        four.setDisable(true);
+        five.setDisable(true);
+        six.setDisable(true);
+        seven.setDisable(true);
+        eight.setDisable(true);
+        nine.setDisable(true);
+        undo.setDisable(true);
+        solve.setDisable(true);
+        eraser.setDisable(true);
+        hint.setDisable(true);
+        notes.setDisable(true);
+        play_pause.setDisable(true);
+        timer=false;
+        PauseTimer();
+        sec=min=0;
+        Timer_sec.setText("00");
+        Timer_min.setText("00");
+        countScore=0;
+        Score.setText("0");
+        score.setText("0");
+        if(mode.equals("create"))
+        {
+            int[][] grid = new int[9][9];
+            List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (!x.get(i).get(j).getText().equals(""))
+                        grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
+                    else
+                        grid[i][j] = 0;
+                }
+            }
+            game.setGrid(grid);
+            if (!game.solve_grid()){
+                throw new NoSolution();
+            }
 
-    @FXML
-    private void Hint() {
-        Won();
-        //give hint "reveal one random cell solution" MAKE SURE random output isn't already given
+            game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
+            Reset();
+        }
+        else
+        {
+            game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 1);
+            Reset();
+        }
+
     }
 
     public void PauseTimer() {
@@ -1747,42 +1813,14 @@ public class GameController {
                 });
             }
         }, 0, 1000);
-
     }
+    //TODO
+    // Hazem apply won case,check for mistake if there increment Mistakes change label mistakes to Mistakes where Mistakes is the number of mistakes if Mistakes==3 set gameover visible,hint
 
-
-    public void solveSudoku() throws NoSolution {
-        one.setDisable(true);
-        two.setDisable(true);
-        three.setDisable(true);
-        four.setDisable(true);
-        five.setDisable(true);
-        six.setDisable(true);
-        seven.setDisable(true);
-        eight.setDisable(true);
-        nine.setDisable(true);
-        undo.setDisable(true);
-        solve.setDisable(true);
-        eraser.setDisable(true);
-        //sfar l score w timer
-        int[][] grid = new int[9][9];
-        List<List<TextField>> x = new ArrayList<>(Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8));
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (!x.get(i).get(j).getText().equals(""))
-                    grid[i][j] = Integer.parseInt(x.get(i).get(j).getText());
-                else
-                    grid[i][j] = 0;
-            }
-        }
-        game.setGrid(grid);
-        if (!game.solve_grid()){
-            throw new NoSolution();
-        }
-
-        game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
-        Reset();
-
+    @FXML
+    private void Hint() {
+        Won();
+        //give hint "reveal one random cell solution" MAKE SURE random output isn't already given
     }
 
     private class NoSolution extends Exception {
