@@ -24,7 +24,6 @@ import java.util.*;
 public class GameController {
     Sudoku game = new Sudoku();
     //VARs
-    public static boolean timer = true;
     @FXML
     private Button solve;
     @FXML
@@ -291,30 +290,19 @@ public class GameController {
     private List<TextField> col7;
     private List<TextField> col8;
     boolean found = false;
+    public static boolean timer = true;
     int i = 0;
     int uno = 0, dos = 0, tres = 0, quatro = 0, cinco = 0, seis = 0, siete = 0, ocho = 0, nueve = 0;
-
-    //SETTERS & GETTERS
-    public Label getTimer_min() {
-        return Timer_min;
-    }
-
-    public void setTimer_min(Label timer_min) {
-        Timer_min = timer_min;
-    }
-
-    public Label getTimer_sec() {
-        return Timer_sec;
-    }
-
-    public void setTimer_sec(Label timer_sec) {
-        Timer_sec = timer_sec;
-    }
-
-    public Label getScore() {
-        return Score;
-    }
-
+    private int  sec=0,min=0;
+    private int hint_count;
+    private int Mistakes = 0;
+    private List<TextField> r, c;
+    private TextField t1 = null, t2 = null, t3 = null;
+    private Stack<Pair<TextField, String>> Undo = new Stack<>();
+    private String difficulty;
+    private int countScore=0;
+    private String mode;
+    private int cells;
 
     //EFFECTS
     @FXML
@@ -1036,16 +1024,6 @@ public class GameController {
         setText(r8c8);
     }
 
-    int  sec=0,min=0;
-    int Mistakes = 0;
-    List<TextField> r, c;
-    int w1 = 0, w2 = 0, w3 = 0;
-    TextField t1 = null, t2 = null, t3 = null;
-    Stack<Pair<TextField, String>> Undo = new Stack<>();
-    String difficulty;
-    private int countScore=0;
-    String mode;
-
     private void SaveData() throws FileNotFoundException {
         Formatter f = new Formatter(difficulty + ".txt");
         String s = name.getText();
@@ -1117,10 +1095,9 @@ public class GameController {
             Undo.push(new Pair<>(x, x.getText()));
             x.setText("");
             x.setPromptText("");
-            //Amgad
             countScore-=50;
             Score.setText(String.valueOf(countScore));
-            //.Amgad
+            cells--;
 
         } else {
             Reset();
@@ -1150,16 +1127,25 @@ public class GameController {
                         x.setPromptText(s);
                     } else {
                         if (!x.getText().equals("") && !x.getText().equals(s))
-                        {delete(current);DisableNumber(s, '+');countScore+=50;}
+                        {
+                            delete(current);
+                            DisableNumber(s, '+');
+                            countScore+=50;
+                            cells++;
+                        }
                         else if (!x.getText().equals(s))
-                        {Undo.push(new Pair<>(x, ""));DisableNumber(s, '+');countScore+=50;}
+                        {
+                            Undo.push(new Pair<>(x, ""));
+                            DisableNumber(s, '+');
+                            countScore+=50;
+                            cells++;
+                        }
                         x.setPromptText("");
                         x.setText(s);
-                        //Amgad
-
                         Score.setText(String.valueOf(countScore));
-                        //.amgad
+                        Matched();
                         if (MainController.MistakeLimit) {
+                            IsMistake(current);
                             if (Mistakes == 3) {
                                 vb.setDisable(true);
                                 GameOver.setVisible(true);
@@ -1167,12 +1153,10 @@ public class GameController {
                                 howTobtn.setDisable(true);
                             }
                         }
-
                     }
                 }
                 HighlightRCB();
-            } catch (Exception ignored) {
-            }
+            } catch (Exception ignored) {}
         } else
             HighlightRCB();
     }
@@ -1534,7 +1518,9 @@ public class GameController {
     }
 
     private void Check() {
-        w1 = CheckRow(r);
+        int w1 = CheckRow(r);
+        int w2 = 0;
+        int w3 = 0;
         if (w1 == 1) {
             w2 = CheckColumn(getColumn(t1));
             w3 = CheckBox(t1);
@@ -1559,8 +1545,120 @@ public class GameController {
         }
     }
 
+    private void finalScore() {
+        int FinalScore;
+        FinalScore=(Integer.parseInt(Score.getText())*1000)/(Integer.parseInt(Timer_sec.getText())+60*Integer.parseInt(Timer_min.getText()));
+        score.setText(String.valueOf(FinalScore));
+    }
+
+    private void PauseTimer() {
+        Timer Game_Timer=new Timer();
+        Game_Timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if (!timer)
+                        Game_Timer.cancel();
+                    if (timer) {
+
+                        if (sec == 59) {
+                            min++;
+                            sec = 0;
+                        }
+                        if (min < 10) {
+                            Timer_min.setText("0" + min);
+                        } else
+                            Timer_min.setText(String.valueOf(min));
+                        if (sec < 10) {
+                            Timer_sec.setText("0" + sec);
+                        } else
+                            Timer_sec.setText(String.valueOf(sec));
+                        sec++;
+                    }
+                });
+            }
+        }, 0, 1000);
+    }
+
+    private boolean Matched(){
+
+        if(cells==81){
+            int [][]arr=game.getCopy();
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row0.get(i).getText())!=arr[0][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row1.get(i).getText())!=arr[1][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row2.get(i).getText())!=arr[2][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row3.get(i).getText())!=arr[3][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row4.get(i).getText())!=arr[4][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row5.get(i).getText())!=arr[5][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row6.get(i).getText())!=arr[6][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row7.get(i).getText())!=arr[7][i])
+                    return false;
+            }
+            for(int i=0;i<9;i++){
+                if(Integer.parseInt(row8.get(i).getText())!=arr[8][i])
+                    return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private void Locate(List<TextField> x,int y){
+        int[][] arr =game.getCopy();
+        for (int i = 0; i < 9; i++) {
+            if (x.get(i).getText().isEmpty()) {
+                x.get(i).setText(String.valueOf(arr[y][i]));
+                cells++;
+                hint_count--;
+                game.AddGiven(x.get(i));
+                x.get(i).setStyle("-fx-background-color: #207bff");
+                break;
+            }
+        }
+    }
+
+    private void IsMistake(TextField x){
+        int [][]arr=game.getCopy();
+        int row,col ;
+        int s=Integer.parseInt(x.getText());
+        row=Integer.parseInt(String.valueOf(x.toString().charAt(14)));
+        col=Integer.parseInt(String.valueOf(x.toString().charAt(16)));
+
+
+        if(arr[row][col]!=s){
+
+            Mistakes++;
+            mistakes.setText(String.valueOf(Mistakes)+"/3");
+
+
+        }
+
+    }
+
     @FXML
-    public void PauseTimerEvent() {
+    private void PauseTimerEvent() {
         timer = !timer;
         PauseTimer();
         Image i;
@@ -1598,36 +1696,23 @@ public class GameController {
 
     @FXML
     private void Undo() {
-        //preform undo
         if (!Undo.isEmpty()) {
             current = Undo.peek().getKey();
-            if (Undo.peek().getKey().getText().equals("")) {
-                DisableNumber(Undo.peek().getValue(), '+');
-                //amgad
-                countScore+=50;
-                Score.setText(String.valueOf(countScore));
-                //amgad
-            }
-            else {
+            if (!Undo.peek().getKey().getText().equals("")) {
                 Reset();
                 delete(current);
                 Undo.pop();
-                if (!Undo.peek().getValue().equals(""))
-                {
-                    DisableNumber(Undo.peek().getValue(), '+');
-                    //amgad
-                    countScore+=50;
-                    Score.setText(String.valueOf(countScore));
-                    //amgad
-                }
-
+            }
+            if (!Undo.peek().getValue().equals(""))
+            {
+                DisableNumber(Undo.peek().getValue(), '+');
+                countScore+=50;
+                Score.setText(String.valueOf(countScore));
             }
             Undo.peek().getKey().setPromptText("");
             Undo.peek().getKey().setText(Undo.peek().getValue());
             HighlightRCB();
             Undo.pop();
-
-
         }
     }
 
@@ -1652,7 +1737,8 @@ public class GameController {
         time.setText(Timer_min.getText() + ":" + Timer_sec.getText());
     }
 
-    public void start() {
+    @FXML
+    private void start() {
         if (level.getSelectedToggle() == null) {
             easy.setTranslateY(20);
             medium.setTranslateY(4);
@@ -1682,6 +1768,7 @@ public class GameController {
             last = null;
         }
         else {
+            timer=true;
             mode="play";
             if (easy.isSelected())
                 difficulty = "easy";
@@ -1696,14 +1783,20 @@ public class GameController {
             switch (difficulty) {
                 case "easy": {
                     game.easy_mode();
+                    cells=81-40;
+                    hint_count=3;
                     break;
                 }
                 case "medium": {
                     game.medium_mode();
+                    cells=81-50;
+                    hint_count=2;
                     break;
                 }
                 case "hard": {
                     game.hard_mode();
+                    cells=81-60;
+                    hint_count=1;
                     break;
                 }
             }
@@ -1728,13 +1821,8 @@ public class GameController {
         }
     }
 
-    public void finalScore() {
-        int FinalScore;
-        FinalScore=(Integer.parseInt(Score.getText())*1000)/(Integer.parseInt(getTimer_sec().getText())+60*Integer.parseInt(getTimer_min().getText()));
-        score.setText(String.valueOf(FinalScore));
-    }
-
-    public void solveSudoku() throws NoSolution {
+    @FXML
+    private void solveSudoku() throws NoSolution {
         one.setDisable(true);
         two.setDisable(true);
         three.setDisable(true);
@@ -1776,51 +1864,35 @@ public class GameController {
             }
 
             game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 0);
-            Reset();
         }
         else
         {
             game.SettingAllData(row0, row1, row2, row3, row4, row5, row6, row7, row8, 1);
-            Reset();
         }
-
+        Reset();
     }
-
-    public void PauseTimer() {
-        Timer Game_Timer=new Timer();
-        Game_Timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(() -> {
-                    if (!timer)
-                        Game_Timer.cancel();
-                    if (timer) {
-
-                        if (sec == 59) {
-                            min++;
-                            sec = 0;
-                        }
-                        if (min < 10) {
-                            Timer_min.setText("0" + min);
-                        } else
-                            Timer_min.setText(String.valueOf(min));
-                        if (sec < 10) {
-                            Timer_sec.setText("0" + sec);
-                        } else
-                            Timer_sec.setText(String.valueOf(sec));
-                        sec++;
-                    }
-                });
-            }
-        }, 0, 1000);
-    }
-    //TODO
-    // Hazem apply won case,check for mistake if there increment Mistakes change label mistakes to Mistakes where Mistakes is the number of mistakes if Mistakes==3 set gameover visible,hint
 
     @FXML
     private void Hint() {
-        Won();
-        //give hint "reveal one random cell solution" MAKE SURE random output isn't already given
+        Random r= new Random();
+        int row = r.nextInt(9);
+        switch (row) {
+            case 0: {Locate(row0,0);break;}
+            case 1: {Locate(row1,1);break;}
+            case 2: {Locate(row2,2);break;}
+            case 3: {Locate(row3,3);break;}
+            case 4: {Locate(row4,4);break;}
+            case 5: {Locate(row5,5);break;}
+            case 6: {Locate(row6,6);break;}
+            case 7: {Locate(row7,7);break;}
+            case 8: {Locate(row8,8);break;}
+        }
+
+        if (hint_count==0)
+            hint.setDisable(true);
+
+        if(Matched())
+            Won();
     }
 
     private class NoSolution extends Exception {
@@ -1838,4 +1910,3 @@ public class GameController {
         }
     }
 }
-

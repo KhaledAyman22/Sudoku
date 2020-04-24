@@ -347,5 +347,10 @@ public class Sudoku {
         this.grid = grid;
     }
 
+    public void AddGiven(TextField x)
+    {
+        Given.add(x);
+    }
+
     public int[][] getCopy(){return copy;}
 }
