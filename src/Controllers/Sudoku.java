@@ -10,7 +10,7 @@ public class Sudoku {
     private int [][]grid;
     private int [][]copy;
     private int lastNumber;
-    private static List<TextField>Given=new ArrayList<>();
+    private static List<TextField> Given = new ArrayList<>();
     public static List<TextField> getGiven() {
         return Given;
     }
