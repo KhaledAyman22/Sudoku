@@ -1,1 +1,0 @@
-Label[id=score, styleClass=label]'0'  Label[id=time, styleClass=label]'00 : 00'
