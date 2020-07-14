@@ -291,6 +291,7 @@ public class GameController {
     private List<TextField> col8;
     boolean found = false;
     public static boolean timer = true;
+    boolean ML,ACM;
     int i = 0;
     int uno = 0, dos = 0, tres = 0, quatro = 0, cinco = 0, seis = 0, siete = 0, ocho = 0, nueve = 0;
     private int  sec=0,min=0;
@@ -1133,18 +1134,21 @@ public class GameController {
                             countScore+=50;
                             cells++;
                         }
-                        else if (!x.getText().equals(s))
+                        else if (x.getText().equals(""))
                         {
                             Undo.push(new Pair<>(x, ""));
                             DisableNumber(s, '+');
                             countScore+=50;
                             cells++;
                         }
+
+                        String xx=x.getText();
                         x.setPromptText("");
                         x.setText(s);
                         Score.setText(String.valueOf(countScore));
-                        Matched();
-                        if (MainController.MistakeLimit) {
+                        if(Matched())
+                            Won();
+                        if (MainController.MistakeLimit && !x.getText().equals(xx)) {
                             IsMistake(current);
                             if (Mistakes == 3) {
                                 vb.setDisable(true);
@@ -1690,6 +1694,11 @@ public class GameController {
 
     @FXML
     private void RedirectToHome() {
+        if(mode=="create")
+        {
+            MainController.MistakeLimit=ML;
+            MainController.ACMistakes=ACM;
+        }
         Game.getGameStage().close();
         Main.main.show();
     }
@@ -1749,6 +1758,10 @@ public class GameController {
         }
         else if (create.isSelected()) {
             mode="create";
+            ML=MainController.MistakeLimit;
+            ACM=MainController.ACMistakes;
+            MainController.MistakeLimit=false;
+            MainController.ACMistakes=false;
             setRowCol();
             vb.setDisable(false);
             vb1.setDisable(false);
