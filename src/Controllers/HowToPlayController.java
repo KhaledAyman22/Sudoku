@@ -18,10 +18,6 @@ public class HowToPlayController {
         backbtn.setTranslateY(0);
     }
 
-    ////////////////
-    //TO BE EDITED//
-    ////////////////
-
     @FXML
     private void RedirectToGame() {
         HowToPlay.getHowToPlayStage().close();

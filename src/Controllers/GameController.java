@@ -1025,6 +1025,7 @@ public class GameController {
         setText(r8c8);
     }
 
+    //SAVES THE SCORE INTO FILES
     private void SaveData() throws FileNotFoundException {
         Formatter f = new Formatter(difficulty + ".txt");
         String s = name.getText();
@@ -1033,7 +1034,7 @@ public class GameController {
         f.format("%s%s%s", score.getText() + " ", s + " ", time.getText());
         f.close();
     }
-
+    //SETS THE ROW GIVEN NUMBERS
     private void setRowCol() {
         row0 = Arrays.asList(r0c0, r0c1, r0c2, r0c3, r0c4, r0c5, r0c6, r0c7, r0c8);
         row1 = Arrays.asList(r1c0, r1c1, r1c2, r1c3, r1c4, r1c5, r1c6, r1c7, r1c8);
@@ -1055,7 +1056,7 @@ public class GameController {
         col7 = Arrays.asList(r0c7, r1c7, r2c7, r3c7, r4c7, r5c7, r6c7, r7c7, r8c7);
         col8 = Arrays.asList(r0c8, r1c8, r2c8, r3c8, r4c8, r5c8, r6c8, r7c8, r8c8);
     }
-
+    //SWITCH EFFECT FOR TOGGLE BUTTONS
     private void SwitchOn(ToggleButton x) {
         try {
             DropShadow dropShadow = new DropShadow();
@@ -1071,7 +1072,7 @@ public class GameController {
         } catch (Exception ignored) {
         }
     }
-
+    //SWITCH EFFECT FOR TOGGLE BUTTONS
     private void SwitchOff(ToggleButton x) {
         try {
             DropShadow dropShadow = new DropShadow();
@@ -1087,7 +1088,7 @@ public class GameController {
         } catch (Exception ignored) {
         }
     }
-
+    //DELETES INPUT FROM THE CELL
     private void delete(TextField x) {
         if (!x.getText().equals("")) {
             HighlightRCB();
@@ -1104,7 +1105,7 @@ public class GameController {
             Reset();
         }
     }
-
+    //WRITES INPUT TO THE CELL
     private void setText(TextField x) {
         previous = current;
         current = x;
@@ -1118,6 +1119,7 @@ public class GameController {
             }
 
             try {
+                boolean m=false;
                 if (s.equals("'")) {
                     delete(current);
                 } else {
@@ -1149,7 +1151,7 @@ public class GameController {
                         if(Matched())
                             Won();
                         if (MainController.MistakeLimit && !x.getText().equals(xx)) {
-                            IsMistake(current);
+                            m=IsMistake(current);
                             if (Mistakes == 3) {
                                 vb.setDisable(true);
                                 GameOver.setVisible(true);
@@ -1160,11 +1162,14 @@ public class GameController {
                     }
                 }
                 HighlightRCB();
+                if(m)
+                    current.setStyle("-fx-background-color: #fc4e4e");
+
             } catch (Exception ignored) {}
         } else
             HighlightRCB();
     }
-
+    //DISABLES THE NUMBER BUTTON AFTER BEING USED 9 TIMES
     private void DisableNumber(String x, char y) {
         if (MainController.HideUsed) {
             if (y == '+') {
@@ -1306,7 +1311,7 @@ public class GameController {
         }
 
     }
-
+    //TAKES A CELL AND RETURNS THE ROW LIST IT BELONGS TO
     private List<TextField> getRow(TextField x) {
         int row = Character.getNumericValue(x.toString().charAt(14));
         switch (row) {
@@ -1341,7 +1346,7 @@ public class GameController {
                 return (null);
         }
     }
-
+    //TAKES A CELL AND RETURNS THE COLUMN LIST IT BELONGS TO
     private List<TextField> getColumn(TextField x) {
         int column = Character.getNumericValue(x.toString().charAt(16));
         switch (column) {
@@ -1376,7 +1381,7 @@ public class GameController {
                 return (null);
         }
     }
-
+    //HIGHLIGHTS THE ROW, COLUMN AND BOX OF A SELECTED CELL
     private void HighlightRCB() {
         //Resetting
         Reset();
@@ -1396,17 +1401,17 @@ public class GameController {
         } else
             i = 0;
     }
-
+    //HIGHLIGHTS THE ROW OF A SELECTED CELL
     private void HighlightR(List<TextField> x) {
         HL(x);
         r = x;
     }
-
+    //HIGHLIGHTS THE COLUMN OF A SELECTED CELL
     private void HighlightC(List<TextField> x) {
         HL(x);
         c = x;
     }
-
+    //MANAGES HIGHLIGHT COLORS
     private void HL(List<TextField> x) {
         for (TextField textField : x) {
             if (textField.getText().equals("")) {
@@ -1426,7 +1431,7 @@ public class GameController {
             }
         }
     }
-
+    //RESETS THE HIGHLIGHTING
     private void Reset() {
         List<List<TextField>> lists;
         lists = Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8);
@@ -1449,7 +1454,7 @@ public class GameController {
             }
         }
     }
-
+    //HIGHLIGHTS THE BOX OF A SELECTED CELL
     private void HighlightB(TextField x) {
         for (Node n1 : x.getParent().getChildrenUnmodifiable()) {
             if (((TextField) n1).getText().equals("")) {
@@ -1470,7 +1475,7 @@ public class GameController {
         }
         current.setStyle("-fx-background-color: #00e8f2");
     }
-
+    //HIGHLIGHTS THE NUMBERS SIMILAR TO A SELECTED NUMBER
     private void HighlightNumber() {
         List<List<TextField>> lists;
         lists = Arrays.asList(row0, row1, row2, row3, row4, row5, row6, row7, row8);
@@ -1487,7 +1492,7 @@ public class GameController {
         }
         current.setStyle("-fx-background-color: #00e8f2");
     }
-
+    //CHECKS A ROW FOR MISTAKES
     private int CheckRow(List<TextField> r) {
         int w = 0;
         for (int j = 0; j < 9; j++) {
@@ -1498,7 +1503,7 @@ public class GameController {
         }
         return w;
     }
-
+    //CHECKS A COLUMN FOR MISTAKES
     private int CheckColumn(List<TextField> c) {
         int w = 0;
         for (int j = 0; j < 9; j++) {
@@ -1509,7 +1514,7 @@ public class GameController {
         }
         return w;
     }
-
+    //CHECKS A BOX FOR MISTAKES
     private int CheckBox(TextField x) {
         int w = 0;
         for (Node n : x.getParent().getChildrenUnmodifiable()) {
@@ -1520,15 +1525,19 @@ public class GameController {
         }
         return w;
     }
-
+    //TOO COMPLICATED TO EXPLAIN :"D
     private void Check() {
+        int [][]arr=game.getCopy();
+        int row,col;
         int w1 = CheckRow(r);
         int w2 = 0;
         int w3 = 0;
         if (w1 == 1) {
             w2 = CheckColumn(getColumn(t1));
             w3 = CheckBox(t1);
-            if (w2 <= 1 && w3 <= 1)
+            row=Integer.parseInt(String.valueOf(t1.toString().charAt(14)));
+            col=Integer.parseInt(String.valueOf(t1.toString().charAt(16)));
+            if (w2 <= 1 && w3 <= 1 && Integer.parseInt(t1.getText())==arr[row][col])
                 t1.setStyle("-fx-background-color: #7d4efc");
         }
 
@@ -1536,7 +1545,9 @@ public class GameController {
         if (w2 == 1) {
             w1 = CheckRow(getRow(t2));
             w3 = CheckBox(t2);
-            if (w1 <= 1 && w3 <= 1)
+            row=Integer.parseInt(String.valueOf(t2.toString().charAt(14)));
+            col=Integer.parseInt(String.valueOf(t2.toString().charAt(16)));
+            if (w1 <= 1 && w3 <= 1 && Integer.parseInt(t2.getText())==arr[row][col])
                 t2.setStyle("-fx-background-color: #7d4efc");
         }
 
@@ -1544,17 +1555,19 @@ public class GameController {
         if (w3 == 1) {
             w2 = CheckColumn(getColumn(t3));
             w1 = CheckRow(getRow(t3));
-            if (w2 <= 1 && w1 <= 1)
+            row=Integer.parseInt(String.valueOf(t3.toString().charAt(14)));
+            col=Integer.parseInt(String.valueOf(t3.toString().charAt(16)));
+            if (w2 <= 1 && w1 <= 1 && Integer.parseInt(t3.getText())==arr[row][col])
                 t3.setStyle("-fx-background-color: #7d4efc");
         }
     }
-
+    //CALCULATES THE FINLAL SCORE
     private void finalScore() {
         int FinalScore;
         FinalScore=(Integer.parseInt(Score.getText())*1000)/(Integer.parseInt(Timer_sec.getText())+60*Integer.parseInt(Timer_min.getText()));
         score.setText(String.valueOf(FinalScore));
     }
-
+    //PAUSES THE TIMER
     private void PauseTimer() {
         Timer Game_Timer=new Timer();
         Game_Timer.scheduleAtFixedRate(new TimerTask() {
@@ -1583,7 +1596,7 @@ public class GameController {
             }
         }, 0, 1000);
     }
-
+    //CHECKS IF ALL THE 81 CELLS ARE CORRECTLY FILLED
     private boolean Matched(){
 
         if(cells==81){
@@ -1628,7 +1641,7 @@ public class GameController {
         }
         return false;
     }
-
+    //LOCATES AN EMPTY CELL AND FILL IT WITH THE ANSWER (HINT)
     private void Locate(List<TextField> x,int y){
         int[][] arr =game.getCopy();
         for (int i = 0; i < 9; i++) {
@@ -1642,8 +1655,8 @@ public class GameController {
             }
         }
     }
-
-    private void IsMistake(TextField x){
+    //COMPARES THE ANSWER WITH THE FINAL ANSWER
+    private boolean IsMistake(TextField x){
         int [][]arr=game.getCopy();
         int row,col ;
         int s=Integer.parseInt(x.getText());
@@ -1654,13 +1667,13 @@ public class GameController {
         if(arr[row][col]!=s){
 
             Mistakes++;
-            mistakes.setText(String.valueOf(Mistakes)+"/3");
-
-
+            mistakes.setText(Mistakes+"/3");
+            return true;
         }
-
+        return false;
     }
 
+    //OTHER EFFECTS
     @FXML
     private void PauseTimerEvent() {
         timer = !timer;
@@ -1694,7 +1707,7 @@ public class GameController {
 
     @FXML
     private void RedirectToHome() {
-        if(mode=="create")
+        if(mode.equals("create"))
         {
             MainController.MistakeLimit=ML;
             MainController.ACMistakes=ACM;
@@ -1908,7 +1921,7 @@ public class GameController {
             Won();
     }
 
-    private class NoSolution extends Exception {
+    private static class NoSolution extends Exception {
         NoSolution() {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setResizable(false);

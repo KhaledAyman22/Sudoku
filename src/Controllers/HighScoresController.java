@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class HighScoresController {
+    //VARS
     public GridPane grid;
     @FXML
     private Button backbtn;
@@ -26,6 +27,7 @@ public class HighScoresController {
     @FXML
     private Button Hard;
 
+    //EFFECTS
     @FXML
     private void BackPE() {
         backbtn.setTranslateY(2);
@@ -80,6 +82,7 @@ public class HighScoresController {
         dropShadow.setColor(Color.rgb(30,99,204));
         x.setEffect(dropShadow);
     }
+
     private void setShadow2(Button x) {
         DropShadow dropShadow=new DropShadow();
         dropShadow.setBlurType(BlurType.THREE_PASS_BOX);
@@ -92,6 +95,8 @@ public class HighScoresController {
         dropShadow.setColor(Color.rgb(3,179,203));
         x.setEffect(dropShadow);
     }
+
+
     private void GetData(String s) throws FileNotFoundException {
         grid.getChildren().clear();
         int score;

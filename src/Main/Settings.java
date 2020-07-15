@@ -3,6 +3,7 @@ package Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -14,6 +15,7 @@ public class Settings {
 
     public Settings() throws Exception {
         SettingsStage=new Stage();
+        SettingsStage.getIcons().add(new Image("images/sudoku.png"));
         SettingsStage.initStyle(StageStyle.UNDECORATED);
         Parent Settings = FXMLLoader.load(getClass().getResource("../Resources/Settings.fxml"));
         SettingsStage.setResizable(false);

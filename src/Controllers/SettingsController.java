@@ -27,9 +27,9 @@ public class SettingsController implements Initializable {
     @FXML
     private ToggleButton UsedNum;
     @FXML
-    private ToggleButton CheckMistake;//
+    private ToggleButton CheckMistake;
     @FXML
-    private ToggleButton MistakeLimit;//*
+    private ToggleButton MistakeLimit;
     @FXML
     private ToggleButton HIdentical;
     @FXML
@@ -39,79 +39,51 @@ public class SettingsController implements Initializable {
     @FXML
     private  void SwitchTimer() {
         if(timer.isSelected())
-        {
             SwitchOn(timer);
-        }
         else
-        {
             SwitchOff(timer);
-        }
     }
     @FXML
     private  void SwitchHDuplicate() {
         if(Dup.isSelected())
-        {
             SwitchOn(Dup);
-        }
         else
-        {
             SwitchOff(Dup);
-        }
     }
     @FXML
     private  void SwitchHideNumbers() {
         if(UsedNum.isSelected())
-        {
             SwitchOn(UsedNum);
-        }
         else
-        {
             SwitchOff(UsedNum);
-        }
     }
     @FXML
     private  void SwitchAutoCheck() {
         if(CheckMistake.isSelected())
-        {
             SwitchOn(CheckMistake);
-        }
         else
-        {
             SwitchOff(CheckMistake);
-        }
     }
     @FXML
     private  void SwitchLimit() {
         if(MistakeLimit.isSelected())
-        {
             SwitchOn(MistakeLimit);
-        }
         else
-        {
             SwitchOff(MistakeLimit);
-        }
     }
     @FXML
     private  void SwitchHArea() {
         if(HArea.isSelected())
-        {
             SwitchOn(HArea);
-        }
         else
-        {
             SwitchOff(HArea);
-        }
     }
     @FXML
     private  void SwitchHIdenticalNumbers() {
         if(HIdentical.isSelected())
-        {
             SwitchOn(HIdentical);
-        }
         else
-        {
             SwitchOff(HIdentical);
-        }
     }
     @FXML
     private void SwitchOn(ToggleButton x) {

@@ -3,6 +3,7 @@ package Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,6 +16,7 @@ public class HowToPlay {
 
     public HowToPlay() throws Exception {
         HowToPlayStage=new Stage();
+        HowToPlayStage.getIcons().add(new Image("images/sudoku.png"));
         HowToPlayStage.initOwner(Game.getGameStage());
         HowToPlayStage.initModality(Modality.WINDOW_MODAL);
         HowToPlayStage.initStyle(StageStyle.UNDECORATED);

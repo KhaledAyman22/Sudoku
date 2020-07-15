@@ -56,9 +56,6 @@ public class MainController implements Initializable {
         hsbtn.setTranslateY(0);
     }
 
-    ////////////////
-    //TO BE EDITED//
-    ////////////////
 
     @FXML
     private void RedirectToSettings() throws Exception {

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
 import javafx.scene.media.MediaPlayer;
@@ -15,6 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage MainStage) throws Exception{
         Parent Main = FXMLLoader.load(getClass().getResource("../Resources/Main.fxml"));
+        MainStage.getIcons().add(new Image("images/sudoku.png"));
         MainStage.setResizable(false);
         MainStage.setTitle("Sudoku Game");
         MainStage.setScene(new Scene(Main));

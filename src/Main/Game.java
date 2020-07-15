@@ -3,19 +3,20 @@ package Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
 public class Game {
     private static Stage GameStage;
-    private static int Role;
     public static Stage getGameStage() {
         return GameStage;
     }
 
     public Game() throws Exception {
         GameStage=new Stage();
+        GameStage.getIcons().add(new Image("images/sudoku.png"));
         GameStage.initStyle(StageStyle.DECORATED);
         Parent game = FXMLLoader.load(getClass().getResource("../Resources/Game.fxml"));
         GameStage.setResizable(false);
