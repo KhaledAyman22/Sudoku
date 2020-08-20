@@ -55,7 +55,11 @@ public class Sudoku {
         return  true;
     }
 
-    // get the next free value int the grid or (value equal ot zero) to try to put number int= it to solve the grid
+    private boolean valid_All(int row, int col, int val){
+        return valid_box(row / 3, col / 3, val) && valid_col(col, val) && valid_row(row, val);
+    }
+
+    // get the next free value int the grid or (value equal ot zero) to try to put number in it to solve the grid
     private int [] get_next(){
         int []arr = new int[2];
         boolean a = false;
@@ -78,7 +82,7 @@ public class Sudoku {
     }
 
     // check if the grid is filled with values or not
-    private boolean grid_fill()
+    private boolean grid_filled()
     {
         for (int i = 0; i < 9; i++)
         {
@@ -91,7 +95,8 @@ public class Sudoku {
 
     }
 
-    // check if the row have any repeated value
+
+    // check if the row has any repeated value
     private boolean row_valid()
     {
         for (int j = 0; j < 9; j++)
@@ -109,7 +114,7 @@ public class Sudoku {
         return  true;
     }
 
-    // check if the column have any repeated value
+    // check if the column has any repeated value
     private boolean col_valid()
     {
         for (int j = 0; j < 9; j++)
@@ -127,7 +132,7 @@ public class Sudoku {
         return true;
     }
 
-    // check if the box have any repeated value in any box
+    // check if the box has any repeated value in any box
     private boolean box_valid(){
         int a = 0, b = 0, s1, s2 = 0;
         for (int k = 0; k < 9;  k++)
@@ -162,10 +167,6 @@ public class Sudoku {
         return box_valid() && row_valid() && col_valid();
     }
 
-    private boolean valid_All(int row, int col, int val){
-        return valid_box(row / 3, col / 3, val) && valid_col(col, val) && valid_row(row, val);
-    }
-
     // generate some values in the grid randomly and put in random position to change the grid each time
     private void generate()
     {
@@ -196,8 +197,7 @@ public class Sudoku {
     }
 
     // function to handle the easy mode
-    public void easy_mode() {
-        final int required = 40;
+    public void mode(int required) {
         int cnt = 0;
         Vector<PairClass> visited = new Vector<>();
         while (cnt < required) {
@@ -230,70 +230,10 @@ public class Sudoku {
         }
     }
 
-    // function to handle the medium mode
-    public void medium_mode()
-    {
-        final int required = 50;
-        int cnt = 0;
-        Vector<PairClass> visited = new Vector<>();
-        while (cnt < required) {
-
-            Random r = new Random();
-            int pos1 = r.nextInt(9);
-            int pos2 = r.nextInt(9);
-            int saved = grid[pos1][pos2];
-            grid[pos1][pos2] = 0;
-            PairClass pair = new PairClass(pos1, pos2);
-
-            if (solve_grid() && lastNumber == saved && check(visited,pair))
-            {
-                visited.add(pair);
-                cnt++;
-            }
-            grid[pos1][pos2] = saved;
-        }
-        copy();
-        for (int i = 0; i < required; i++)
-        {
-            PairClass pair = visited.get(i);
-            grid[pair.first][pair.second] = 0;
-        }
-    }
-
-    // function to handle the hard mode
-    public void hard_mode()
-    {
-        final int required = 60;
-        int cnt = 0;
-        Vector<PairClass> visited = new Vector<>();
-        while (cnt < required)
-        {
-            Random r = new Random();
-            int pos1 = r.nextInt(9);
-            int pos2 = r.nextInt(9);
-            int saved = grid[pos1][pos2];
-            grid[pos1][pos2] = 0;
-            PairClass pair = new PairClass(pos1, pos2);
-            if (solve_grid() && lastNumber == saved && check(visited,pair))
-            {
-                visited.add(pair);
-                cnt++;
-            }
-            grid[pos1][pos2] = saved;
-        }
-        copy();
-        for (int i = 0; i < required; i++)
-        {
-            PairClass pair = visited.get(i);
-            grid[pair.first][pair.second] = 0;
-        }
-    }
-
-
     // main method to solve the grid based of backtracking Algorithm and return true if it is solved
     public boolean solve_grid()
     {
-        if (All_valid() && grid_fill()) return true;
+        if (All_valid() && grid_filled()) return true;
 
         int[] arr = get_next();
         for (int i = 1; i <= 9; i++)

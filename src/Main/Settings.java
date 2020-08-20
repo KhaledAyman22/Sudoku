@@ -1,5 +1,6 @@
 package Main;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,13 +17,12 @@ public class Settings {
     public Settings() throws Exception {
         SettingsStage=new Stage();
         SettingsStage.getIcons().add(new Image("images/sudoku.png"));
-        SettingsStage.initStyle(StageStyle.UNDECORATED);
+        SettingsStage.initStyle(StageStyle.DECORATED);
         Parent Settings = FXMLLoader.load(getClass().getResource("../Resources/Settings.fxml"));
         SettingsStage.setResizable(false);
         SettingsStage.setTitle("Sudoku Game");
         SettingsStage.setScene(new Scene(Settings));
         SettingsStage.show();
+        SettingsStage.setOnCloseRequest(windowEvent -> Main.main.show());
     }
-
-
 }

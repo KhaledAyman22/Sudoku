@@ -297,7 +297,6 @@ public class GameController {
     private int  sec=0,min=0;
     private int hint_count;
     private int Mistakes = 0;
-    private List<TextField> r, c;
     private TextField t1 = null, t2 = null, t3 = null;
     private Stack<Pair<TextField, String>> Undo = new Stack<>();
     private String difficulty;
@@ -1031,7 +1030,7 @@ public class GameController {
         String s = name.getText();
         if (s.contains(" "))
             s = s.replace(" ", "_");
-        f.format("%s%s%s", score.getText() + " ", s + " ", time.getText());
+        f.format("%s%s%s", score.getText() + "--", s + "--", time.getText());
         f.close();
     }
     //SETS THE ROW GIVEN NUMBERS
@@ -1150,9 +1149,11 @@ public class GameController {
                         Score.setText(String.valueOf(countScore));
                         if(Matched())
                             Won();
-                        if (MainController.MistakeLimit && !x.getText().equals(xx)) {
+                        if (MainController.ACMistakes && !x.getText().equals(xx)) {
                             m=IsMistake(current);
                             if (Mistakes == 3) {
+                                timer=!timer;
+                                PauseTimer();
                                 vb.setDisable(true);
                                 GameOver.setVisible(true);
                                 play_pause.setDisable(true);
@@ -1388,8 +1389,8 @@ public class GameController {
 
         //highlighting row,col,and box
         if (MainController.HighArea || MainController.HighDup) {
-            HighlightR(getRow(current));
-            HighlightC(getColumn(current));
+            HL(Objects.requireNonNull(getRow(current)));
+            HL(Objects.requireNonNull(getColumn(current)));
             HighlightB(current);
         }
         if (MainController.HighIdentical)
@@ -1401,17 +1402,7 @@ public class GameController {
         } else
             i = 0;
     }
-    //HIGHLIGHTS THE ROW OF A SELECTED CELL
-    private void HighlightR(List<TextField> x) {
-        HL(x);
-        r = x;
-    }
-    //HIGHLIGHTS THE COLUMN OF A SELECTED CELL
-    private void HighlightC(List<TextField> x) {
-        HL(x);
-        c = x;
-    }
-    //MANAGES HIGHLIGHT COLORS
+    //MANAGES HIGHLIGHT COLORS FOR ROWS AND COLUMNS
     private void HL(List<TextField> x) {
         for (TextField textField : x) {
             if (textField.getText().equals("")) {
@@ -1441,7 +1432,8 @@ public class GameController {
                     if (lists.get(i).get(j).getText().equals(""))
                         lists.get(i).get(j).setStyle("-fx-background-color: #e3e3e3");
                     else {
-                        if (lists.get(i).get(j).getStyle().equals("-fx-background-color: #fc4e4e")) ;
+                        if (lists.get(i).get(j).getStyle().equals("-fx-background-color: #fc4e4e"))
+                            continue;
                         else if (lists.get(i).get(j).getStyle().equals("-fx-background-color: #00e8f2") && found) {
                             lists.get(i).get(j).setStyle("-fx-background-color: #fc4e4e");
                             found = false;
@@ -1473,7 +1465,8 @@ public class GameController {
                 }
             }
         }
-        current.setStyle("-fx-background-color: #00e8f2");
+        if(!current.getStyle().equals("-fx-background-color: #fc4e4e"))
+            current.setStyle("-fx-background-color: #00e8f2");
     }
     //HIGHLIGHTS THE NUMBERS SIMILAR TO A SELECTED NUMBER
     private void HighlightNumber() {
@@ -1490,7 +1483,8 @@ public class GameController {
                 }
             }
         }
-        current.setStyle("-fx-background-color: #00e8f2");
+        if(!current.getStyle().equals("-fx-background-color: #fc4e4e"))
+            current.setStyle("-fx-background-color: #00e8f2");
     }
     //CHECKS A ROW FOR MISTAKES
     private int CheckRow(List<TextField> r) {
@@ -1529,7 +1523,7 @@ public class GameController {
     private void Check() {
         int [][]arr=game.getCopy();
         int row,col;
-        int w1 = CheckRow(r);
+        int w1 = CheckRow(getRow(current));
         int w2 = 0;
         int w3 = 0;
         if (w1 == 1) {
@@ -1541,7 +1535,7 @@ public class GameController {
                 t1.setStyle("-fx-background-color: #7d4efc");
         }
 
-        w2 = CheckColumn(c);
+        w2 = CheckColumn(getColumn(current));
         if (w2 == 1) {
             w1 = CheckRow(getRow(t2));
             w3 = CheckBox(t2);
@@ -1561,7 +1555,7 @@ public class GameController {
                 t3.setStyle("-fx-background-color: #7d4efc");
         }
     }
-    //CALCULATES THE FINLAL SCORE
+    //CALCULATES THE FINAL SCORE
     private void finalScore() {
         int FinalScore;
         FinalScore=(Integer.parseInt(Score.getText())*1000)/(Integer.parseInt(Timer_sec.getText())+60*Integer.parseInt(Timer_min.getText()));
@@ -1642,18 +1636,20 @@ public class GameController {
         return false;
     }
     //LOCATES AN EMPTY CELL AND FILL IT WITH THE ANSWER (HINT)
-    private void Locate(List<TextField> x,int y){
+    private boolean Locate(List<TextField> x,int y){
         int[][] arr =game.getCopy();
         for (int i = 0; i < 9; i++) {
             if (x.get(i).getText().isEmpty()) {
                 x.get(i).setText(String.valueOf(arr[y][i]));
+                DisableNumber(String.valueOf(arr[y][i]),'+');
                 cells++;
                 hint_count--;
                 game.AddGiven(x.get(i));
                 x.get(i).setStyle("-fx-background-color: #207bff");
-                break;
+                return true;
             }
         }
+        return false;
     }
     //COMPARES THE ANSWER WITH THE FINAL ANSWER
     private boolean IsMistake(TextField x){
@@ -1665,9 +1661,10 @@ public class GameController {
 
 
         if(arr[row][col]!=s){
-
-            Mistakes++;
-            mistakes.setText(Mistakes+"/3");
+            if(MainController.MistakeLimit) {
+                Mistakes++;
+                mistakes.setText(Mistakes+"/3");
+            }
             return true;
         }
         return false;
@@ -1751,6 +1748,8 @@ public class GameController {
 
     @FXML
     private void Won() {
+        timer=!timer;
+        PauseTimer();
         finalScore();
         Won.setVisible(true);
         WonBox.setVisible(true);
@@ -1808,19 +1807,19 @@ public class GameController {
             game.Play();
             switch (difficulty) {
                 case "easy": {
-                    game.easy_mode();
+                    game.mode(40);
                     cells=81-40;
                     hint_count=3;
                     break;
                 }
                 case "medium": {
-                    game.medium_mode();
+                    game.mode(50);
                     cells=81-50;
                     hint_count=2;
                     break;
                 }
                 case "hard": {
-                    game.hard_mode();
+                    game.mode(60);
                     cells=81-60;
                     hint_count=1;
                     break;
@@ -1901,17 +1900,21 @@ public class GameController {
     @FXML
     private void Hint() {
         Random r= new Random();
-        int row = r.nextInt(9);
-        switch (row) {
-            case 0: {Locate(row0,0);break;}
-            case 1: {Locate(row1,1);break;}
-            case 2: {Locate(row2,2);break;}
-            case 3: {Locate(row3,3);break;}
-            case 4: {Locate(row4,4);break;}
-            case 5: {Locate(row5,5);break;}
-            case 6: {Locate(row6,6);break;}
-            case 7: {Locate(row7,7);break;}
-            case 8: {Locate(row8,8);break;}
+        boolean found=false;
+        while (!found)
+        {
+            int row = r.nextInt(9);
+            switch (row) {
+                case 0: {found = Locate(row0,0);break;}
+                case 1: {found = Locate(row1,1);break;}
+                case 2: {found = Locate(row2,2);break;}
+                case 3: {found = Locate(row3,3);break;}
+                case 4: {found = Locate(row4,4);break;}
+                case 5: {found = Locate(row5,5);break;}
+                case 6: {found = Locate(row6,6);break;}
+                case 7: {found = Locate(row7,7);break;}
+                case 8: {found = Locate(row8,8);break;}
+            }
         }
 
         if (hint_count==0)

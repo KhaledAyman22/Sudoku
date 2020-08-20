@@ -1,5 +1,7 @@
 package Main;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +25,6 @@ public class Game {
         GameStage.setTitle("Sudoku Game");
         GameStage.setScene(new Scene(game));
         GameStage.show();
-
+        GameStage.setOnCloseRequest(windowEvent -> Main.main.show());
     }
 }

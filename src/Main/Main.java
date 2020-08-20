@@ -1,6 +1,10 @@
 package Main;
 
+import Controllers.MainController;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,6 +29,7 @@ public class Main extends Application {
         Media BG = new Media(new File("BG.mp3").toURI().toString());
         MP = new MediaPlayer(BG);
         MP.setAutoPlay(true);
+        MainStage.setOnCloseRequest(event -> Platform.exit());
     }
     public static void main(String[] args) {
         launch(args);

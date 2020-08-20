@@ -99,17 +99,15 @@ public class HighScoresController {
 
     private void GetData(String s) throws FileNotFoundException {
         grid.getChildren().clear();
-        int score;
-        String name,time;
         Scanner S=new Scanner(new File(s));
         SortedMap<Integer, Pair<String,String>> records = new TreeMap<>(Collections.reverseOrder());
         while(S.hasNext())
         {
-            score=Integer.parseInt(S.next());
-            name=S.next();
-            time=S.next();
-            Pair<String, String>p=new Pair<>(name,time);
-            records.put(score,p);
+            String line=S.nextLine();
+            String[] data;
+            data=line.split("--");
+            Pair<String, String>p=new Pair<>(data[1],data[2]);
+            records.put(Integer.parseInt(data[0]),p);
         }
 
         int j=0;
